@@ -12,6 +12,6 @@ fun main() {
     staticFileLocation("/public")
 
     get("/", { _, _ ->
-        ModelAndView(mapOf<String,Any>(), "index.hbs")
+        ModelAndView(hashMapOf<String,Any>().apply { this["title"]="ryan" }, "index.hbs")
     }, handlebars)
 }
