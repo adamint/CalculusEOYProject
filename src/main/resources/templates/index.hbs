@@ -1,5 +1,39 @@
 {{> header.hbs }}
 
-hello
+<div>
+    <div class="uk-margin-small-top uk-section uk-section-large">
+        <h2 class="light uk-text-center">A comprehensive reference database for AP Calculus</h2>
+
+        <h2 class="moderate-bold uk-text-center">References</h2>
+
+        <div class="uk-margin-auto uk-text-center">
+            {{#each references}}
+                <h3 class="uk-margin-small-top"><a href="{{& path}}">{{name}}
+                    <img width="12px" src="/icons/mbr/mbri-open-in-new.svg" alt="open-new"></a>
+                </h3>
+            {{/each}}
+        </div>
+
+        <h2 class="moderate-bold uk-text-center">Textbook</h2>
+        <div class="uk-margin-auto">
+            {{#each chapters}}
+                <h3 class="uk-text-center">Chapter {{chapterNumber}} | {{name}}</h3>
+                <div class="uk-width-1-5 uk-margin-auto">
+                    <ul uk-accordion>
+                        {{#each sections}}
+                            <li>
+                                <a class="uk-accordion-title rem-1" href="#">Section {{chapterNumber}}.{{sectionNumber}}
+                                    | {{name}} </a>
+                                <div class="uk-accordion-content rem-1">Go to <a
+                                        href="/textbook/{{chapterNumber}}/{{sectionNumber}}">this section.</a>
+                                    Section {{chapterNumber}}.{{sectionNumber}} is about {{description}}</div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
 
 {{> footer.hbs }}
