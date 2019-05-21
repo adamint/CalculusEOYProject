@@ -1,5 +1,6 @@
 package com.adamratzman.calculus
 
+import com.adamratzman.calculus.endpoints.derivatives
 import com.adamratzman.calculus.endpoints.home
 import com.adamratzman.calculus.endpoints.shortcuts
 import com.adamratzman.calculus.utils.getAllChapters
@@ -50,6 +51,7 @@ class Website {
 
         home()
         shortcuts()
+        derivatives()
     }
 
     internal fun getMap(pageTitle: String, pageId: String, positionBottom: Boolean): MutableMap<String, Any?> {

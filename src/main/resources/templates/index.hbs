@@ -8,8 +8,7 @@
 
         <div class="uk-margin-auto uk-text-center">
             {{#each references}}
-                <h3 class="uk-margin-small-top"><a href="{{& path}}">{{name}}
-                    <img width="12px" src="/icons/mbr/mbri-open-in-new.svg" alt="open-new"></a>
+                <h3 class="uk-margin-small-top"><a href="{{& path}}">{{name}} {{> open-in-new.hbs}}</a>
                 </h3>
             {{/each}}
         </div>
@@ -17,7 +16,8 @@
         <h2 class="moderate-bold uk-text-center">Textbook</h2>
         <div class="uk-margin-auto">
             {{#each chapters}}
-                <h3 class="uk-text-center">Chapter {{chapterNumber}} | {{name}}</h3>
+                <h3 class="uk-text-center"><a href="/textbook/{{chapterNumber}}" class="black">Chapter {{chapterNumber}}
+                    | {{name}} {{> open-in-new.hbs}}</a></h3>
                 <div class="uk-width-1-5 uk-margin-auto">
                     <ul uk-accordion>
                         {{#each sections}}
