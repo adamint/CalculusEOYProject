@@ -17,4 +17,8 @@ fun Website.derivatives() {
             handlebars.render(map, "derivative.hbs")
         }
     }
+
+    get("/derivatives") { request, response ->
+
+    }
 }

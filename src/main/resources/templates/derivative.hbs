@@ -2,11 +2,17 @@
 
 <div>
     <div class="uk-margin-small-top uk-section uk-section-large">
-        <h3 class="light uk-text-center">Derivative Rule | {{derivative.readable}}</h3>
-        <p>See <a class="rem-1" href="/derivatives/all">all rules →</a></p>
+        <div class="uk-text-center">
+            <h3 class="light">Derivative Rule | {{derivative.readable}}</h3>
+            <p>See <a class="rem-1" href="/derivatives/all">all rules →</a></p>
 
-        <div id="derivative">
-            \frac d{dx}
+            <div id="derivative">
+                $$ \frac d{dx}[{{derivative.before}}] = {{derivative.after}} $$
+
+                {{#if derivative.note}}
+                    <p><i>Note: </i> {{derivative.note}}</p>
+                {{/if}}
+            </div>
         </div>
     </div>
 </div>

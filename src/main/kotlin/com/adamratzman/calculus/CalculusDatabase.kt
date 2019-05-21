@@ -2,6 +2,7 @@ package com.adamratzman.calculus
 
 import com.adamratzman.calculus.endpoints.derivatives
 import com.adamratzman.calculus.endpoints.home
+import com.adamratzman.calculus.endpoints.problems
 import com.adamratzman.calculus.endpoints.shortcuts
 import com.adamratzman.calculus.utils.getAllChapters
 import com.adamratzman.calculus.utils.getAllReferences
@@ -52,6 +53,7 @@ class Website {
         home()
         shortcuts()
         derivatives()
+        problems()
     }
 
     internal fun getMap(pageTitle: String, pageId: String, positionBottom: Boolean): MutableMap<String, Any?> {
@@ -59,6 +61,7 @@ class Website {
         map["title"] = "AP Calculus Database | $pageTitle"
         map["page"] = pageId
         map["position-bottom"] = positionBottom
+        map["color"] = getRandomColor()
 
         // meta
         map["description"] =
