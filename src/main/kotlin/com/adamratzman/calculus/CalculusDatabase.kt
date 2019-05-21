@@ -1,17 +1,22 @@
 package com.adamratzman.calculus
 
-import com.adamratzman.calculus.endpoints.*
+import com.adamratzman.calculus.endpoints.derivatives
+import com.adamratzman.calculus.endpoints.home
+import com.adamratzman.calculus.endpoints.problems
+import com.adamratzman.calculus.endpoints.shortcuts
 import com.adamratzman.calculus.utils.getAllChapters
 import com.adamratzman.calculus.utils.getAllReferences
 import com.adamratzman.calculus.utils.getRandomColor
 import com.adamratzman.calculus.utils.render
 import com.github.jknack.handlebars.Handlebars
 import com.github.jknack.handlebars.Options
+import com.google.gson.Gson
 import spark.Spark.*
 import spark.staticfiles.StaticFilesConfiguration
 import spark.template.handlebars.HandlebarsTemplateEngine
 
 val handlebars = HandlebarsTemplateEngine()
+val gson = Gson()
 
 fun main() {
     Website()
@@ -50,7 +55,6 @@ class Website {
         home()
         shortcuts()
         derivatives()
-        integrals()
         problems()
     }
 

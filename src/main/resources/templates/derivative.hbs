@@ -12,6 +12,13 @@
                 {{#if derivative.note}}
                     <p><i>Note: </i> {{derivative.note}}</p>
                 {{/if}}
+
+                {{> problem-script.hbs }}
+
+                <br />
+                <div class="uk-margin-large-top" id="gen-prb"></div>
+
+                <script>generateProblem({{& generator-type}}, "gen-prb", "Test Yourself")</script>
             </div>
         </div>
     </div>

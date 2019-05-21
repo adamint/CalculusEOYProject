@@ -1,6 +1,7 @@
 package com.adamratzman.calculus.endpoints
 
 import com.adamratzman.calculus.Website
+import com.adamratzman.calculus.problems.getProblemGenerator
 import com.adamratzman.calculus.rules.Derivative
 import com.adamratzman.calculus.utils.render
 import spark.Spark.get
@@ -13,6 +14,7 @@ fun Website.derivatives() {
         else {
             val map = getMap("Derivative | ${derivative.readable}", "derivative-$id", true)
             map["derivative"] = derivative
+            map["generator-type"] = derivative.generatorType.jsString
 
             handlebars.render(map, "derivative.hbs")
         }
