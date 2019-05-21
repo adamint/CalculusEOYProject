@@ -1,9 +1,6 @@
 package com.adamratzman.calculus
 
-import com.adamratzman.calculus.endpoints.derivatives
-import com.adamratzman.calculus.endpoints.home
-import com.adamratzman.calculus.endpoints.problems
-import com.adamratzman.calculus.endpoints.shortcuts
+import com.adamratzman.calculus.endpoints.*
 import com.adamratzman.calculus.utils.getAllChapters
 import com.adamratzman.calculus.utils.getAllReferences
 import com.adamratzman.calculus.utils.getRandomColor
@@ -53,6 +50,7 @@ class Website {
         home()
         shortcuts()
         derivatives()
+        integrals()
         problems()
     }
 

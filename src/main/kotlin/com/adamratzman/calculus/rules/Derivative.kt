@@ -7,5 +7,6 @@ enum class Derivative(
     val after: String,
     val note: String? = null
 ) {
-    CONSTANT("Constant", "constant", "c", "0", note = "This will always be zero")
+    CONSTANT("Constant", "constant", "c", "0", note = "This will always be zero"),
+    POWER("Power", "power", "x^n", "nx^{x-1}")
 }
