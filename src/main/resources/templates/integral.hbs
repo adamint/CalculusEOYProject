@@ -4,14 +4,21 @@
     <div class="uk-margin-small-top uk-section uk-section-large">
         <div class="uk-text-center">
             <h3 class="light">Integral Rule | {{integral.readable}}</h3>
-            <p>See <a class="rem-1" href="/integrals/all">all rules →</a></p>
+            <p>See <a class="rem-1" href="/integrals/">all rules →</a></p>
 
             <div id="integral">
-                $$ \int [{{integral.before}}] du= {{integral.after}} + C$$
+                $$ \int [{{integral.before}}] du = {{integral.after}} + C $$
 
                 {{#if integral.note}}
                     <p><i>Note: </i> {{integral.note}}</p>
                 {{/if}}
+
+                {{> problem-script.hbs }}
+
+                <br />
+                <div class="uk-margin-large-top" id="gen-prb"></div>
+
+                <script>generateProblem({{& generator-type}}, "gen-prb", "Test Yourself")</script>
             </div>
         </div>
     </div>

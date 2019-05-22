@@ -20,10 +20,15 @@ fun getAllChapters(): List<Chapter> = listOf(
     getChapterOne()
 )
 
-fun getAllReferences(): List<Any> = listOf(
-    Link("Derivative Rules", "/derivatives/all"),
-    Link("Integral Rules", "/integrals/all"),
+fun getAllReferences(): List<Link> = listOf(
+    Link("Derivative Rules", "/derivatives/"),
+    Link("Integral Rules", "/integrals/"),
     Link("All Notes", "/notes/all")
+)
+
+fun getAllClassReferences(): List<Link> = listOf(
+    Link("Canvas", "/canvas"),
+    Link("Khan Academy", "/khan")
 )
 
 fun getSiteContent(path: String) = Jsoup.connect(generateUrl(path)).get().html()

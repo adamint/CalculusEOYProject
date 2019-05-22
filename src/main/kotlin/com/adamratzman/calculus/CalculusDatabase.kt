@@ -1,13 +1,8 @@
 package com.adamratzman.calculus
 
-import com.adamratzman.calculus.endpoints.derivatives
-import com.adamratzman.calculus.endpoints.home
-import com.adamratzman.calculus.endpoints.problems
-import com.adamratzman.calculus.endpoints.shortcuts
-import com.adamratzman.calculus.utils.getAllChapters
-import com.adamratzman.calculus.utils.getAllReferences
-import com.adamratzman.calculus.utils.getRandomColor
-import com.adamratzman.calculus.utils.render
+import com.adamratzman.calculus.endpoints.*
+import com.adamratzman.calculus.problems.addGenerators
+import com.adamratzman.calculus.utils.*
 import com.github.jknack.handlebars.Handlebars
 import com.github.jknack.handlebars.Options
 import com.google.gson.Gson
@@ -28,6 +23,8 @@ class Website {
     val chapters = getAllChapters()
 
     val references = getAllReferences()
+
+    val extendedReferences = getAllClassReferences() + references
 
     init {
         HandlebarsTemplateEngine()
@@ -52,10 +49,14 @@ class Website {
             handlebars.render(map, "404.hbs")
         }
 
+        addGenerators()
+
         home()
         shortcuts()
         derivatives()
+        integrals()
         problems()
+        reference()
     }
 
     internal fun getMap(pageTitle: String, pageId: String, positionBottom: Boolean): MutableMap<String, Any?> {

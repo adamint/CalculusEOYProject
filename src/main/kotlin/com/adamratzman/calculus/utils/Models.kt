@@ -8,7 +8,7 @@ data class Section(val sectionNumber: Int, val name: String, val description: St
 
 data class Link(val name: String, val path: String)
 
-data class Item(val pre: String, val linkText:String?, val path: String)
+data class Rule(val name: String, val pre: String, val post: String)
 
 fun getRandomColor(): String {
     val underlineColor = Color.getHSBColor(Random.nextFloat(), Random.nextFloat(), 0.8f)

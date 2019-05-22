@@ -4,11 +4,36 @@ import com.adamratzman.calculus.problems.GeneratorType
 
 enum class Derivative(
     val readable: String,
-    val id: String,
     val generatorType: GeneratorType,
+    val type: CalcType,
     val before: String,
     val after: String,
     val note: String? = null
 ) {
-    CONSTANT("Constant", "constant", GeneratorType.CONSTANT_DER,"c", "0", note = "This will always be zero")
+    // basic
+    CONSTANT(
+        "Constant",
+        GeneratorType.CONSTANT_DER, CalcType.BASIC, "c", "0", "This will always be zero"
+    ),
+    POWER("Power", GeneratorType.POWER_DER, CalcType.BASIC, "x^n", "nx^{x-1}"),
+
+    // trig
+    SIN(
+        "Sine",
+        GeneratorType.SIN_DER,
+        CalcType.BASIC_TRIGONOMETRIC,
+        "sin(ax)",
+        "a*cos(ax)",
+        "a is a constant multiple"
+    ),
+
+    // inverse trig
+    ARCSIN(
+        "Inverse Sine",
+        GeneratorType.ARCSIN_DER,
+        CalcType.INVERSE_TRIGONOMETRIC,
+        "arcsin(x)",
+        "\\dfrac 1{\\sqrt{1-x^2}}"
+    )
 }
+

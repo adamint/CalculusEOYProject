@@ -13,7 +13,7 @@ fun Website.problems() {
     path("/problems") {
         get("/view") { request, response ->
             val type = request.queryParams("type")
-                ?.let { type -> GeneratorType.values().find { type.replace(" ", "").equals(it.readable, true) } }
+                ?.let { type -> GeneratorType.values().find { type.equals(it.name, true) } }
 
             val number = request.queryParams("number")?.toIntOrNull()
 
@@ -31,21 +31,23 @@ fun Website.problems() {
         get("/generate") { request, response ->
             val type = request.queryParams("type")
                 ?.let { type ->
-                    GeneratorType.values().find { type.toLowerCase().replace(" ", "").equals(it.readable, true) }
+                    GeneratorType.values().find { type.equals(it.name, true) }
                 }
 
-            if (type == null) "Invalid parameters"
+            if (type == null) "Invalid problem type."
             else {
-                val problem = getProblemGenerator(type).newProblem()
+                val problem = getProblemGenerator(type)?.newProblem()
+                if (problem == null) "No problem generator exists for this type."
+                else {
+                    if (request.queryParams("json")?.toBoolean() == true) {
+                        gson.toJson(problem)
+                    } else {
+                        val map = getMap("generated problem", "_generated", true)
+                        map["problem"] = problem
+                        map["original-question"] = problem.question.replace("\\\\", "\\")
 
-                if (request.queryParams("json")?.toBoolean() == true) {
-                    gson.toJson(problem)
-                } else {
-                    val map = getMap("generated problem", "_generated", true)
-                    map["problem"] = problem
-                    map["original-question"] = problem.question.replace("\\\\", "\\")
-
-                    handlebars.render(map, "problem.hbs")
+                        handlebars.render(map, "problem.hbs")
+                    }
                 }
             }
         }
