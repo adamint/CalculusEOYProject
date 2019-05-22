@@ -6,9 +6,11 @@ import com.adamratzman.calculus.utils.*
 import com.github.jknack.handlebars.Handlebars
 import com.github.jknack.handlebars.Options
 import com.google.gson.Gson
+import resources
 import spark.Spark.*
 import spark.staticfiles.StaticFilesConfiguration
 import spark.template.handlebars.HandlebarsTemplateEngine
+import java.io.File
 
 val handlebars = HandlebarsTemplateEngine()
 val gson = Gson()
@@ -26,7 +28,19 @@ class Website {
 
     val extendedReferences = getAllClassReferences() + references
 
+    val filesResourceDirectory = File(this::class.java.getResource("/public/uploads/").file)
+
+    val uploads:List<Upload> = filesResourceDirectory.walkTopDown().filter { it.isFile }.map {
+        Upload(
+            it.path.removePrefix(filesResourceDirectory.path + File.separator).replace(
+                File.separatorChar,
+                '/'
+            ), it.readBytes()
+        )
+    }.toList()
+
     init {
+        println(uploads.map { it.fileName })
         HandlebarsTemplateEngine()
         registerHelpers()
 
@@ -57,6 +71,8 @@ class Website {
         integrals()
         problems()
         reference()
+        resources()
+        textbook()
     }
 
     internal fun getMap(pageTitle: String, pageId: String, positionBottom: Boolean): MutableMap<String, Any?> {
@@ -84,4 +100,16 @@ class Website {
             } else options.inverse()
         }
     }
+
+    fun getSection(chapterNumber: Int, sectionNumber: Any): Pair<Chapter, Section>? =
+        chapters.find { it.chapterNumber == chapterNumber }?.let { chapter ->
+            chapter.sections.find { it.sectionNumber == sectionNumber }?.let {section ->
+                chapter to section
+            }
+        }
+
+    fun List<Upload>.getFilesInDirectory(name: String) = filter { it.fileName.startsWith("$name/") }
+        .map { it.copy(fileName = it.fileName.removePrefix("$name/")) }
+
+    fun List<Upload>.getFile(name: String) = find { it.fileName == name }
 }

@@ -20,15 +20,15 @@
                         {{#each second}}
                             <tr>
                                 <td class="uk-table-link"><a
-                                        href="{{#if derivative}}/derivatives/{{else}}/integrals/{{/if}}
-                                            {{readable}}">{{readable}} {{> open-in-new.hbs}}</a>
+                                        href="{{#if derivative}}/derivatives/{{else}}/integrals/{{/if}}{{readable}}">
+                                    {{readable}} {{> open-in-new.hbs}}</a>
                                 </td>
                                 <td>
-                                   {{#if derivative}}
-                                       \( \dfrac d{dx}[{{before}}] = {{after}} \)
-                                   {{else}}
-                                       \( \int [{{before}}] du = {{after}} + C \)
-                                   {{/if}}
+                                    {{#if derivative}}
+                                        \( \dfrac d{dx}[{{before}}] = {{after}} \)
+                                    {{else}}
+                                        \( \int {{before}} du = {{after}} + C \)
+                                    {{/if}}
                                 </td>
                             </tr>
                         {{/each}}

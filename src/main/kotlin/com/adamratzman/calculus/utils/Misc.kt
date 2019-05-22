@@ -1,5 +1,6 @@
 package com.adamratzman.calculus.utils
 
+import com.adamratzman.calculus.gson
 import com.google.common.math.IntMath.gcd
 import spark.ModelAndView
 import spark.template.handlebars.HandlebarsTemplateEngine
@@ -39,3 +40,5 @@ fun Double.toFraction(): Rational {
 
     return Rational(numerator,denomerator)
 }
+
+fun Any.toJson() = gson.toJson(this)

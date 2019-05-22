@@ -6,11 +6,11 @@ fun getChapterOne() = Chapter(
     "Limits and Their Properties",
     1,
     listOf(
-        Section(1, "A Preview of Calculus"),
+        Section(1, "A Preview of Calculus", hasNotes = false),
         Section(2, "Finding Limits Graphically and Numerically"),
         Section(3, "Evaluating Limits Analytically"),
         Section(4, "Continuity and One-Sided Limits"),
-        Section(5, "Infinite Limits"),
+        Section(5, "Infinite Limits", hasNotes = false),
         Section(6, "Limits at Infinity")
     )
 )
@@ -25,7 +25,7 @@ fun getChapterTwo() = Chapter(
         Section(4, "The Chain Rule"),
         Section(5, "Implicit Differentiation"),
         Section(6, "Derivatives of Inverse Functions"),
-        Section(7, "Related Rates"),
+        Section(7, "Related Rates", hasNotes = false),
         Section(8, "Newton's Method")
     )
 )
@@ -48,7 +48,7 @@ fun getChapterFour() = Chapter(
     "Integration",
     4,
     listOf(
-        Section(2, "Area and Reimann Sums"),
+        Section("2-3", "Area and Reimann Sums"),
         Section(1, "Antiderivatives and Indefinite Integration"),
         Section(4, "The Fundamental Theorem of Calculus"),
         Section(5, "Integration by Substitution"),

@@ -1,0 +1,50 @@
+{{> header.hbs }}
+
+<div>
+    <div class="uk-margin-small-top uk-section uk-section-large">
+        <h2 class="bold uk-text-center">AP Textbook Materials</h2>
+
+        <div class="uk-margin-auto uk-width-3-5">
+            <ul uk-accordion>
+                {{#each chapters}}
+                    <li>
+                        <h3 class="uk-accordion-title">
+                            <a class="black" href="/textbook/{{chapterNumber}}/">Chapter {{chapterNumber}}
+                                - {{name}} {{> open-in-new.hbs}}</a>
+                        </h3>
+                        <div class="uk-accordion-content">
+                            <ul>
+                                {{#each sections}}
+                                    <li>
+                                        <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}">
+                                            Section {{chapterNumber}}.{{sectionNumber}} > {{name}}
+                                            {{#if hasNotes}}
+                                                <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}/notes">
+                                                    <img width="20px" src="/icons/mbr/mbri-pages.svg" alt="pages">
+                                                </a>
+                                            {{/if}}
+                                        </a>
+                                        <p>This section is about {{description}}.
+                                            See <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}">more</a>.
+                                        </p>
+                                        <p>Want to practice this content?
+                                            Click <a
+                                                    href="/textbook/{{chapterNumber}}/{{sectionNumber}}/practice">here</a>
+                                            to launch the practice page for this section.
+                                        </p>
+                                    </li>
+                                {{/each}}
+                                <li>
+                                    <a href="/textbook/{{chapterNumber}}/review">Chapter {{chapterNumber}}
+                                        Review {{> open-in-new.hbs}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{{> footer.hbs }}
