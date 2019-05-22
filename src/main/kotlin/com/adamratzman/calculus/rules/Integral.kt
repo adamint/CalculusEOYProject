@@ -10,7 +10,7 @@ enum class Integral(
     val after: String
 ) {
     GENERAL("General", CalcType.BASIC, null, "kf(u)", "kF(u)"),
-    CONSTANT("Constant", CalcType.BASIC, GeneratorType.CONSTANT_INT, "1", "u"),
+    CONSTANT("Constant", CalcType.BASIC, GeneratorType.CONSTANT_INT, "", "u"),
     LN("Natural logarithm", CalcType.BASIC, null, "\\dfrac 1u", "\\ln{|u|}"),
     CONSTANT_POWER(
         "Constant to a power",

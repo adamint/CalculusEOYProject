@@ -23,9 +23,17 @@ fun Website.textbook() {
         }
 
         path("/:chapter") {
+            get("/review") { request, _ ->
+                // TODO
+            }
+
             path("/:section") {
                 get("/practice") { request, _ ->
 
+                }
+
+                get("/review") { request, _ ->
+                    // TODO
                 }
 
                 get("/notes") { request, response ->
