@@ -11,6 +11,7 @@ fun Website.textbook() {
 
     path("/textbook") {
         get("") { _, response -> response.redirect("/textbook/") }
+
         get("/") { request, _ ->
             val map = getMap("Textbook", "textbook", false)
 
@@ -28,6 +29,15 @@ fun Website.textbook() {
             }
 
             path("/:section") {
+                get("/") { request, _ ->
+                    val chapter = request.params(":chapter")?.toIntOrNull()
+                    val section = request.params(":section")
+
+                    if (section == "" || section == "ov") {
+
+                    }
+                }
+
                 get("/practice") { request, _ ->
 
                 }

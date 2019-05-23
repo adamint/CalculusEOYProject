@@ -40,7 +40,6 @@ class Website {
     }.toList()
 
     init {
-        println(uploads.map { it.fileName })
         HandlebarsTemplateEngine()
         registerHelpers()
 
