@@ -30,7 +30,7 @@ class Website {
 
     val filesResourceDirectory = File(this::class.java.getResource("/public/uploads/").file)
 
-    val uploads:List<Upload> = filesResourceDirectory.walkTopDown().filter { it.isFile }.map {
+    val uploads: List<Upload> = filesResourceDirectory.walkTopDown().filter { it.isFile }.map {
         Upload(
             it.path.removePrefix(filesResourceDirectory.path + File.separator).replace(
                 File.separatorChar,
@@ -102,7 +102,7 @@ class Website {
 
     fun getSection(chapterNumber: Int, sectionNumber: Any): Pair<Chapter, Section>? =
         chapters.find { it.chapterNumber == chapterNumber }?.let { chapter ->
-            chapter.sections.find { it.sectionNumber == sectionNumber }?.let {section ->
+            chapter.sections.find { it.sectionNumber == sectionNumber }?.let { section ->
                 chapter to section
             }
         }

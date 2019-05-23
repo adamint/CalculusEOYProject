@@ -15,23 +15,21 @@ data class Problem(
     val answer: String,
     val queryUrl: String,
     val question: String = "\\dfrac d{dx}[$_question]"
-)
+) {
+    val ansJson: String = answer.replace("\\", "\\\\")
+    val quesJson: String = question.replace("\\", "\\\\")
+}
 
 abstract class ProblemGenerator(val type: GeneratorType) {
     val url = "/problems/generate?type=${type.name}&json=true"
 
     abstract fun generate(): Problem
 
-    fun newProblem(): Problem = generate().let { problem ->
-        problem.copy(
-            question = problem.question.replace("\\", "\\\\"),
-            answer = problem.answer.replace("\\", "\\\\")
-        )
-    }
+    fun newProblem(): Problem = generate()
 
     fun problem(question: String, answer: String, isIntegral: Boolean = false) =
         if (!isIntegral) Problem(question, answer, url)
-        else Problem(question, "$answer + C", url, "\\int [$question] dx")
+        else Problem(question, "$answer + C", url, "\\int $question dx")
 
     fun generate(number: Int) = (1..number).map { generate() }
 }

@@ -10,9 +10,9 @@ class ArcSinGenerator : ProblemGenerator(GeneratorType.ARCSIN_INT) {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt()
         val aSquared = a * a
         return problem(
-            "\\frac{1}{\\sqrt{$aSquared - x^2}}",
-            "arcsin\\frac {x}${a}",
-            true
+            "\\dfrac{1}{\\sqrt{$aSquared - x^2}}",
+            "arcsin\\dfrac {x}{$a}",
+            isIntegral = true
         )
     }
 

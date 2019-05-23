@@ -2,15 +2,14 @@
     <div id="generated-problem-content">
         <!-- Generated -->
         <script type="application/javascript">
-            let question = "{{problem.question}}";
-            let answer = "{{problem.answer}}";
-
+            let question = "{{& problem.quesJson}}";
+            let answer = "{{& problem.ansJson}}";
             let query = "{{& problem.queryUrl}}";
 
             function handleClick() {
                 $.get(query, function (problem) {
-                    question = problem.question.replace("\\\\", "\\");
-                    answer = problem.answer.replace("\\\\", "\\");
+                    question = problem.question;
+                    answer = problem.answer;
 
                     let button = $("#side-change-button");
                     if (button.text() !== "See Answer") {

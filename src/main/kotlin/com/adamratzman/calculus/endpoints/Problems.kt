@@ -6,6 +6,7 @@ import com.adamratzman.calculus.problems.GeneratorType
 import com.adamratzman.calculus.problems.getProblemGenerator
 import com.adamratzman.calculus.utils.getSiteContent
 import com.adamratzman.calculus.utils.render
+import com.adamratzman.calculus.utils.toJson
 import spark.Spark.get
 import spark.Spark.path
 
@@ -44,7 +45,7 @@ fun Website.problems() {
                     } else {
                         val map = getMap("generated problem", "_generated", true)
                         map["problem"] = problem
-                        map["original-question"] = problem.question.replace("\\\\", "\\")
+                        map["original-question"] = problem.question
 
                         handlebars.render(map, "problem.hbs")
                     }
