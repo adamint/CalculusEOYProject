@@ -31,7 +31,7 @@ abstract class ProblemGenerator(val type: GeneratorType) {
 
     fun problem(question: String, answer: String, isIntegral: Boolean = false) =
         if (!isIntegral) Problem(question, answer, url)
-        else Problem(question, answer, url, "\\int [$question] du")
+        else Problem(question, "$answer + C", url, "\\int [$question] dx")
 
     fun generate(number: Int) = (1..number).map { generate() }
 }
@@ -57,6 +57,7 @@ enum class GeneratorType(val readable: String) {
     // integrals
     CONSTANT_INT("Constant"),
     CONSTANT_POWER_INT("Power Rule (Integrals)"),
+    ARCSIN_INT("Inverse Sine"),
 
     ;
 

@@ -18,5 +18,12 @@ enum class Integral(
         GeneratorType.CONSTANT_POWER_INT,
         "a^u",
         "\\dfrac{1}{\\dfrac {d}{dx}[u]*lna}a^u"
+    ),
+    ARCSIN(
+        "Inverse Sine",
+        CalcType.INVERSE_TRIGONOMETRIC,
+        GeneratorType.ARCSIN_INT,
+        "\\frac{1}{\\sqrt{a^2-x^2}}",
+        "arcsin\\frac xa"
     )
 }
