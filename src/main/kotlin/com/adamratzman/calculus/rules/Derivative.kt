@@ -36,4 +36,3 @@ enum class Derivative(
         "\\dfrac 1{\\sqrt{1-x^2}}"
     )
 }
-
