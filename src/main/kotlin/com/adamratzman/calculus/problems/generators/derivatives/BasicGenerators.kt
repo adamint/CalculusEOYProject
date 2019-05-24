@@ -4,7 +4,6 @@ import com.adamratzman.calculus.problems.GeneratorType
 import com.adamratzman.calculus.problems.Problem
 import com.adamratzman.calculus.problems.ProblemGenerator
 import com.adamratzman.calculus.problems.genVariableNumber
-import com.adamratzman.calculus.problems.toNum
 import kotlin.random.Random
 
 class CoefficientGenDer : ProblemGenerator(GeneratorType.COEFFICIENT_DER) {
@@ -71,8 +70,8 @@ class LogGenDer : ProblemGenerator(GeneratorType.LOG_DER) {
         val const = genVariableNumber(10, 0, 1, allowDouble = false).toInt()
         return if (Random.nextBoolean()) {
             problem(
-                "log_${a}(${const}x)",
-                "\\dfrac ${const}{xln($a)}"
+                "log_$a(${const}x)",
+                "\\dfrac $const{xln($a)}"
             )
         } else problem(
             "log_${a}x",

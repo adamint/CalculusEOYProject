@@ -7,11 +7,7 @@ fun getChapterOne() = Chapter(
     1,
     listOf(
         Section(
-            1, 1, "A Preview of Calculus", null, isImportant = false, notesNames = listOf(),
-            concepts = listOf(
-                Concept("Test concept no link", null),
-                Concept("Test concept link", "/test")
-            )
+            1, 1, "A Preview of Calculus", null, isImportant = false, notesNames = listOf()
         ),
         Section(1, 2, "Finding Limits Graphically and Numerically", 4),
         Section(1, 3, "Evaluating Limits Analytically", 3),

@@ -57,7 +57,6 @@ enum class GeneratorType(val readable: String) {
     CSC_DER("Cosecant"),
     COT_DER("Cotangent"),
 
-
     // integrals
     CONSTANT_INT("Constant"),
     POWER_INT("Power"),
