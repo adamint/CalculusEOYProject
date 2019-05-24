@@ -41,15 +41,3 @@ class ArcSecGenInt : ProblemGenerator(GeneratorType.ARCSEC_INT) {
         )
     }
 }
-
-class PowerGenInt : ProblemGenerator(GeneratorType.POWER_INT) {
-    override fun generate(): Problem {
-        val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
-        val aSquared = a * a
-        return problem(
-            "\\dfrac{1}{\\sqrt{$aSquared - x^2}}",
-            "arcsin\\dfrac {x}{$a}",
-            isIntegral = true
-        )
-    }
-}
