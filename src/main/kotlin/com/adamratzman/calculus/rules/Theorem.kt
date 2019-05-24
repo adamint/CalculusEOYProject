@@ -103,7 +103,7 @@ enum class Theorem(
         "function ${Math("f")}",
         "${Math("f")} is continuous on the closed interval ${Math("[a,b]")}",
 math = "There exists a number ${Math("c")} in the closed interval ${Math("[a,b]")} such that " +
-        "\\int_a^b f(x)dx = f(c)(b-a)"
+        "${Math("\\int_a^b f(x)dx = f(c)(b-a)")}"
     ),
 
     AVG_VALUE_FUNC(
