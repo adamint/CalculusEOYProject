@@ -7,7 +7,8 @@ data class Chapter(
     val name: String,
     val chapterNumber: Int,
     val sections: List<Section>,
-    val concepts: List<Concept> = listOf()
+    val concepts: List<Concept> = listOf(),
+    val additionalResources: List<Link>? = null
 ) {
     fun getNotes() = sections.map { it.notesNames }.flatten().map { "chapter$chapterNumber/notes/$it" }
 }
