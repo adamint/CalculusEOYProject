@@ -69,10 +69,12 @@
                             <a href="/textbook/{{chapterNumber}}/{{section.sectionNumber}}/practice">
                                 Section {{chapterNumber}}.{{section.sectionNumber}} Practice </a>
                         </li>
-                        <li>
-                            <a href="/aws/textbook/chapter{{chapterNumber}}/review/{{chapterNumber}}-{{section.sectionNumber}}/solutions{{chapterNumber}}-{{section.sectionNumber}}.pdf">
-                                Section {{chapterNumber}}.{{section.sectionNumber}} Practice Solutions </a>
-                        </li>
+                        {{#unless section.hasMultipleNotes}}
+                            <li>
+                                <a href="/aws/textbook/chapter{{chapterNumber}}/review/{{chapterNumber}}-{{section.sectionNumber}}/solutions{{chapterNumber}}-{{section.sectionNumber}}.pdf">
+                                    Section {{chapterNumber}}.{{section.sectionNumber}} Practice Solutions </a>
+                            </li>
+                        {{/unless}}
                     </ul>
                 </div>
             {{/if}}

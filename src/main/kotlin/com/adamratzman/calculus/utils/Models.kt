@@ -28,6 +28,7 @@ data class Section(
     val hasSectionConcepts: Boolean = concepts.isNotEmpty()
 
     val hasNotes: Boolean = notesNames.isNotEmpty()
+    val hasMultipleNotes:Boolean=notesNames.size > 1
 }
 
 data class Link(val name: String, val path: String)
