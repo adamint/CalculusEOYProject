@@ -6,3 +6,9 @@ enum class CalcType(val readable: String) {
     BASIC_TRIGONOMETRIC("Basic Trig"),
     INVERSE_TRIGONOMETRIC("Inverse Trig")
 }
+
+fun String.math() = "\\($this\\)"
+
+data class Math(val math: String) {
+    override fun toString() = math.math()
+}
