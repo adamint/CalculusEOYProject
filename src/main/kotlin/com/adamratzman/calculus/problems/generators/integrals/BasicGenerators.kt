@@ -46,12 +46,14 @@ class PowerGenInt : ProblemGenerator(GeneratorType.POWER_INT) {
         return if (Random.nextBoolean()) {
             problem(
                 "${b}x^{$a}",
-                "${Rational(b, a + 1)}x^{${a + 1}}"
+                "${Rational(b, a + 1)}x^{${a + 1}}",
+                isIntegral = true
             )
         } else
             problem(
                 "x^{$a}",
-                "${Rational(1, a + 1)}x^{${a + 1}}"
+                "${Rational(1, a + 1)}x^{${a + 1}}",
+                isIntegral = true
             )
     }
 }
