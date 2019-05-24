@@ -3,7 +3,7 @@ package com.adamratzman.calculus.problems
 import org.reflections.Reflections
 import kotlin.random.Random
 
-private val problemGenerators: HashMap<GeneratorType, ProblemGenerator> = hashMapOf()
+internal val problemGenerators: HashMap<GeneratorType, ProblemGenerator> = hashMapOf()
 
 fun getProblemGenerator(type: GeneratorType) = problemGenerators[type]
 
