@@ -1,8 +1,6 @@
 package com.adamratzman.calculus.endpoints
 
 import com.adamratzman.calculus.Website
-import com.adamratzman.calculus.rules.CalcType
-import com.adamratzman.calculus.rules.Derivative
 import com.adamratzman.calculus.rules.Theorem
 import com.adamratzman.calculus.rules.TheoremType
 import com.adamratzman.calculus.utils.render
@@ -14,7 +12,7 @@ fun Website.theorems() {
         get("/") { _, _ ->
             val derivative = Theorem.values().filter { it.type == TheoremType.DERIVATIVE }
             val integral = Theorem.values().filter { it.type == TheoremType.INTEGRAL }
-            val basic = Theorem.values().filter { it.type == null }
+            val basic = Theorem.values().filter { it.type == TheoremType.BASIC }
 
             val map = getMap("Theorem List", "theorems", false)
             map["types"] = listOf(
@@ -31,11 +29,11 @@ fun Website.theorems() {
 
         get("/:id") { request, _ ->
             val id = request.params(":id")
-            val derivative = Theorem.values().find { it.name == id || it.readable == id }
-            if (derivative == null) handlebars.render(getMap("404", "404", true), "404.hbs")
+            val theorem = Theorem.values().find { it.name == id || it.readable == id }
+            if (theorem == null) handlebars.render(getMap("404", "404", true), "404.hbs")
             else {
-                val map = getMap("Theorem | ${derivative.readable}", "theorem-$id", true)
-                map["theorem"] = theorems()
+                val map = getMap("Theorem | ${theorem.readable}", "theorem-$id", true)
+                map["theorem"] = theorem
 
                 handlebars.render(map, "theorem-law.hbs")
             }

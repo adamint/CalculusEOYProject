@@ -9,11 +9,19 @@
             <div id="theorem" class="uk-margin-medium-top">
                 {{& theorem.conditions}}
 
-                Then
+                <br />
 
-                $$ {{theorem.math}} $$
+                <b>Then:</b>
+
+                <br />
+                <br />
+
+                {{theorem.math}}
 
                 {{#if theorem.note}}
+                    <br />
+                    <br />
+
                     <p><i>Note: </i> {{theorem.note}}</p>
                 {{/if}}
 
