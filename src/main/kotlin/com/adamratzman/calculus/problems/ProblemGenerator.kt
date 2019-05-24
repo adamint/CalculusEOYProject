@@ -22,7 +22,11 @@ abstract class ProblemGenerator(val type: GeneratorType) {
 
     abstract fun generate(): Problem
 
-    fun newProblem(): Problem = generate()
+    fun newProblem(): Problem {
+        val problem = generate()
+        return if (Random.nextInt(8) > 2) problem
+        else problem.copy(_question = problem.answer, answer = problem.question, question = problem.answer)
+    }
 
     fun problem(question: String, answer: String, isIntegral: Boolean = false) =
         if (!isIntegral) Problem(question, answer, url)
