@@ -40,7 +40,7 @@ fun Website.problems() {
             if (type == null || number == null || number !in 1..50) {
                 "Invalid parameters"
             } else {
-                val map = getMap("generated problems", "_generated", false)
+                val map = getMap("generated problems", "_generated", true)
                 map["problems"] = getSiteContent("/problems/generate?type=${type.name}&number=$number")
                 map["type"] = type
 
@@ -56,6 +56,7 @@ fun Website.problems() {
 
             if (type == null) "Invalid problem type."
             else {
+                println("$type ${getProblemGenerator(type)}")
                 val problem = getProblemGenerator(type)?.newProblem()
                 if (problem == null) "No problem generator exists for this type."
                 else {

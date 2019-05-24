@@ -112,11 +112,6 @@ class Website {
                 chapter to section
             }
         }
-
-    fun List<Upload>.getFilesInDirectory(name: String) = filter { it.fileName.startsWith("$name/") }
-        .map { it.copy(fileName = it.fileName.removePrefix("$name/")) }
-
-    fun List<Upload>.getFile(name: String) = find { it.fileName == name }
 }
 
 fun getHerokuAssignedPort(): Int {
