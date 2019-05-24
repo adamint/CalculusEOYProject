@@ -140,42 +140,42 @@ enum class Derivative(
     // inverse trig
     ARCSIN(
         "Inverse Sine",
-        GeneratorType.ARCSIN_DER,
+        null,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arcsin(x)",
         "\\dfrac 1{\\sqrt{1-x^2}}"
     ),
     ARCTAN(
         "Inverse Tangent",
-        GeneratorType.ARCTAN_DER,
+        null,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arctan(x)",
         "\\dfrac 1{1 + x^2}"
     ),
     ARCSEC(
         "Inverse Secant",
-        GeneratorType.ARCSEC_DER,
+        null,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arcsec(x)",
         "\\dfrac 1{|x|\\sqrt{x^2 - 1}}"
     ),
     ARCCOS(
         "Inverse Sine",
-        GeneratorType.ARCCOS_DER,
+        null,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arccos(x)",
         "\\dfrac {-1}{\\sqrt{1-x^2}}"
     ),
     ARCCOT(
         "Inverse Tangent",
-        GeneratorType.ARCCOT_DER,
+        null,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arccot(x)",
         "\\dfrac {-1}{1 + x^2}"
     ),
     ARCCSC(
         "Inverse Secant",
-        GeneratorType.ARCCSC_DER,
+        null,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arccsc(x)",
         "\\dfrac {-1}{|x|\\sqrt{x^2 - 1}}"

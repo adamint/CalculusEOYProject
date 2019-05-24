@@ -1,5 +1,8 @@
 package com.adamratzman.calculus.problems
 
+import com.adamratzman.calculus.problems.generators.derivatives.ConstantGenerator
+import com.adamratzman.calculus.problems.generators.derivatives.PowerRuleGenerator
+import com.adamratzman.calculus.problems.generators.derivatives.SinGenDer
 import org.reflections.Reflections
 import kotlin.random.Random
 
@@ -57,12 +60,6 @@ enum class GeneratorType(val readable: String) {
     CSC_DER("Cosecant"),
     COT_DER("Cotangent"),
 
-    ARCSIN_DER("Inverse Sine"),
-    ARCTAN_DER("Inverse Tangent"),
-    ARCSEC_DER("Inverse Secant"),
-    ARCCOS_DER("Inverse Cosine"),
-    ARCCOT_DER("Inverse Cotangent"),
-    ARCCSC_DER("Inverse Cosecant"),
 
     // integrals
     CONSTANT_INT("Constant"),

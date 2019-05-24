@@ -6,7 +6,7 @@ import com.adamratzman.calculus.problems.ProblemGenerator
 import com.adamratzman.calculus.problems.genVariableNumber
 import kotlin.math.absoluteValue
 
-class ArcSinGeneratorInt : ProblemGenerator(GeneratorType.ARCSIN_INT) {
+class ArcSinGenInt : ProblemGenerator(GeneratorType.ARCSIN_INT) {
     override fun generate(): Problem {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         val aSquared = a * a
@@ -18,7 +18,7 @@ class ArcSinGeneratorInt : ProblemGenerator(GeneratorType.ARCSIN_INT) {
     }
 }
 
-class ArcTanGeneratorInt : ProblemGenerator(GeneratorType.ARCTAN_INT) {
+class ArcTanGenInt : ProblemGenerator(GeneratorType.ARCTAN_INT) {
     override fun generate(): Problem {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         val aSquared = a * a
@@ -30,9 +30,7 @@ class ArcTanGeneratorInt : ProblemGenerator(GeneratorType.ARCTAN_INT) {
     }
 }
 
-/*
-
-class ArcSecGeneratorInt : ProblemGenerator(GeneratorType.ARCSEC_INT) {
+class ArcSecGenInt : ProblemGenerator(GeneratorType.ARCSEC_INT) {
     override fun generate(): Problem {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         val aSquared = a * a
@@ -42,11 +40,9 @@ class ArcSecGeneratorInt : ProblemGenerator(GeneratorType.ARCSEC_INT) {
             isIntegral = true
         )
     }
-
 }
 
-
-class PowerGeneratorInt : ProblemGenerator(GeneratorType.POWER_INT) {
+class PowerGenInt : ProblemGenerator(GeneratorType.POWER_INT) {
     override fun generate(): Problem {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         val aSquared = a * a
@@ -56,6 +52,4 @@ class PowerGeneratorInt : ProblemGenerator(GeneratorType.POWER_INT) {
             isIntegral = true
         )
     }
-
 }
- */
