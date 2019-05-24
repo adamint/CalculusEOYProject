@@ -41,7 +41,7 @@ fun Website.problems() {
             if (type == null || number == null || number !in 1..50) {
                 "Invalid parameters"
             } else {
-                val map = getMap("generated problems", "_generated", true)
+                val map = getMap("Practice | ${type.readable}", "_generated", true)
                 map["problems"] = getSiteContent("/problems/generate?type=${type.name}&number=$number")
                 map["type"] = type
 
