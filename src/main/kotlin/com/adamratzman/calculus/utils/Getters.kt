@@ -12,6 +12,10 @@ fun getChapterOne() = Chapter(
         Section(4, "Continuity and One-Sided Limits"),
         Section(5, "Infinite Limits", hasNotes = false),
         Section(6, "Limits at Infinity")
+    ),
+    listOf(
+        Concept("Test concept"),
+        Concept("Test concept with link", "/theorems-and-laws")
     )
 )
 

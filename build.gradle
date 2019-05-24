@@ -9,6 +9,16 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest {
+        attributes "Main-Class": "com.adamratzman.calculus.CalculusDatabaseKt"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 dependencies {
     implementation "com.sparkjava:spark-core:2.8.0"
     implementation "com.sparkjava:spark-template-handlebars:2.7.1"

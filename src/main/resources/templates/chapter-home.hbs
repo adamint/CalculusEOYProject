@@ -2,52 +2,37 @@
 
 <div>
     <div class="uk-margin-small-top uk-section uk-section-large">
-        <h2 class="bold uk-text-center">Chapter {{chapter.chapterNumber}} > {{chapter.name}}</h2>
+        <h2 class="moderate-bold uk-text-center uk-margin-medium-bottom">Chapter {{chapter.chapterNumber}}
+            , {{chapter.name}}</h2>
 
-        <div class="uk-margin-auto uk-margin-medium-top uk-width-3-5">
-            <ul uk-accordion>
-                {{#each chapters}}
+        <div style="margin-left: 40%">
+            <h3 class="light rem-1-8"><u>Important concepts</u></h3>
+            <ul class="">
+                {{#each chapter.concepts}}
                     <li>
-                        <h3 class="uk-accordion-title">
-                            <a class="black" href="/textbook/{{chapterNumber}}">Chapter {{chapterNumber}}
-                                - {{name}}</a>
-                        </h3>
-                        <div class="uk-accordion-content">
-                            <ul>
-                                <li class="uk-margin-small-bottom">
-                                    <a href="/textbook/{{chapterNumber}}">Chapter {{chapterNumber}} Overview</a>
-                                </li>
-
-                                {{#each sections}}
-                                    <li>
-                                        <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}">
-                                            Section {{chapterNumber}}.{{sectionNumber}} > {{name}}
-                                            {{#if hasNotes}}
-                                                <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}/notes">
-                                                    <img width="20px" src="/icons/mbr/mbri-pages.svg" alt="pages">
-                                                </a>
-                                            {{/if}}
-                                        </a>
-                                        <p>This section is about {{description}}.
-                                            See <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}">more</a>.
-                                        </p>
-                                        <p>Want to practice this content?
-                                            Click <a
-                                                    href="/textbook/{{chapterNumber}}/{{sectionNumber}}/practice">here</a>
-                                            to launch the practice page for this section.
-                                        </p>
-                                    </li>
-                                {{/each}}
-                                <li>
-                                    <a href="/textbook/{{chapterNumber}}/review">Chapter {{chapterNumber}}
-                                        Review {{> open-in-new.hbs}}</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <p class="rem-1-2">
+                            {{#if url}}<a class="black" href="{{url}}">{{/if}}
+                            {{concept}}
+                            {{#if url}} {{> open-in-new.hbs }}</a>{{/if}}
+                        </p>
                     </li>
                 {{/each}}
             </ul>
         </div>
+
+        <div style="margin-left: 40%">
+            <h3 class="light"><u>Resources</u></h3>
+            <ul class="">
+                <li>
+                    <a href="/textbook/{{chapter.chapterNumber}}/notes">Notes</a>
+                </li>
+            </ul>
+        </div>
+
+        <div style="margin-left: 40%">
+            <h3 class="light"><u>Review</u></h3>
+        </div>
+
     </div>
 </div>
 

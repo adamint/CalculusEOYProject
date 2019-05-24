@@ -38,6 +38,10 @@ html, a, nav, li {
     font-size: 1.5rem;
 }
 
+.rem-1-2 {
+    font-size: 1.2rem;
+}
+
 .disable-link-highlighting. a, a:hover, a:visited {
     border: none;
     outline: none;
