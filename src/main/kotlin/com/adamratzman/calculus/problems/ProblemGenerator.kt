@@ -24,7 +24,7 @@ abstract class ProblemGenerator(val type: GeneratorType) {
 
     fun newProblem(): Problem {
         val problem = generate()
-        return if (Random.nextInt(8) > 2) problem
+        return if (Random.nextInt(6) > 0) problem
         else problem.copy(_question = problem.answer, answer = problem.question, question = problem.answer)
     }
 
