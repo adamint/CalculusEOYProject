@@ -3,7 +3,7 @@
 <div>
     <div class="uk-margin-small-top uk-section uk-section-large">
         <div class="uk-text-center">
-            <h2 class="moderate-bold">{{#if derivative}}Derivative{{else}}Integral{{/if}} List</h2>
+            <h2 class="moderate-bold">{{type}} List</h2>
 
             {{#each types}}
                 <div class="uk-width-3-5 uk-margin-auto">
@@ -13,21 +13,25 @@
                         <thead>
                         <tr class="uk-table-middle">
                             <th>Rule Name</th>
-                            <th>{{#if derivative}}Derivative{{else}}Integral{{/if}}</th>
+                            <th>{{type}}</th>
                         </tr>
                         </thead>
                         <tbody>
                         {{#each second}}
                             <tr>
                                 <td class="uk-table-link"><a
-                                        href="{{#if derivative}}/derivatives/{{else}}/integrals/{{/if}}{{readable}}">
+                                        href="{{link-path}}/{{readable}}">
                                     {{readable}} {{> open-in-new.hbs}}</a>
                                 </td>
                                 <td>
                                     {{#if derivative}}
                                         \( \dfrac d{dx}[{{before}}] = {{after}} \)
                                     {{else}}
-                                        \( \int {{before}} dx = {{after}} + C \)
+                                        {{#if integral}}
+                                            \( \int {{before}} dx = {{after}} + C \)
+                                        {{else}}
+                                            \( {{math}} \)
+                                        {{/if}}
                                     {{/if}}
                                 </td>
                             </tr>

@@ -21,6 +21,10 @@ fun Website.integrals() {
                 "Inverse Trig" to inverseTrig
             )
 
+            map["integral"] = true
+            map["type"] = "Integral"
+            map["link-path"] = "/integrals"
+
             handlebars.render(map, "list-full.hbs")
         }
 

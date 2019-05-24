@@ -23,6 +23,8 @@ fun Website.derivatives() {
                 "Inverse Trig" to inverseTrig
             )
             map["derivative"] = true
+            map["type"] = "Derivative"
+map["link-path"] = "/derivatives"
 
             handlebars.render(map, "list-full.hbs")
         }
