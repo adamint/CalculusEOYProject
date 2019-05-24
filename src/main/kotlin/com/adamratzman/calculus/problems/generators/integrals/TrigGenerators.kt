@@ -230,3 +230,126 @@ class SecTanGenInt : ProblemGenerator(GeneratorType.SECTAN_INT) {
     }
 }
 
+class SecGenInt : ProblemGenerator(GeneratorType.SEC_INT) {
+    override fun generate(): Problem {
+        val a = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+        val b = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+
+        return when (Random.nextInt(3)) {
+            0 -> {
+                problem(
+                    "${a}sec(${b}x)",
+                    "${Rational(a, b)}ln{|sec(${b}x) + tan(${b}x)|}",
+                    isIntegral = true
+                )
+            }
+            1 -> {
+                problem(
+                    "sec(${b}x)",
+                    "${Rational(1, b)}ln{|sec(${b}x) + tan(${b}x)|}",
+                    isIntegral = true)
+            }
+            else -> {
+                problem(
+                    "${a}sec(x)",
+                    "${a}ln{|sec(x) + tan(x)|}",
+                    isIntegral = true
+                )
+            }
+        }
+
+    }
+}
+
+class CscGenInt : ProblemGenerator(GeneratorType.CSC_INT) {
+    override fun generate(): Problem {
+        val a = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+        val b = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+
+        return when (Random.nextInt(3)) {
+            0 -> {
+                problem(
+                    "${a}csc(${b}x)",
+                    "${Rational(-a, b)}ln{|csc(${b}x) + cot(${b}x)|}",
+                    isIntegral = true
+                )
+            }
+            1 -> {
+                problem(
+                    "csc(${b}x)",
+                    "${Rational(-1, b)}ln{|csc(${b}x) + cot(${b}x)|}",
+                    isIntegral = true)
+            }
+            else -> {
+                problem(
+                    "${a}csc(x)",
+                    "${-a}ln{|csc(x) + cot(x)|}",
+                    isIntegral = true
+                )
+            }
+        }
+
+    }
+}
+
+class TanGenInt : ProblemGenerator(GeneratorType.TAN_INT) {
+    override fun generate(): Problem {
+        val a = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+        val b = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+
+        return when (Random.nextInt(3)) {
+            0 -> {
+                problem(
+                    "${a}tan(${b}x)",
+                    "${Rational(-a, b)}ln{|cos(${b}x)|}",
+                    isIntegral = true
+                )
+            }
+            1 -> {
+                problem(
+                    "tan(${b}x)",
+                    "${Rational(-1, b)}ln{|cos(${b}x)|}",
+                    isIntegral = true)
+            }
+            else -> {
+                problem(
+                    "${a}tan(x)",
+                    "${-a}ln{|cos(x)|}",
+                    isIntegral = true
+                )
+            }
+        }
+
+    }
+}
+
+class CotGenInt : ProblemGenerator(GeneratorType.COT_INT) {
+    override fun generate(): Problem {
+        val a = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+        val b = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+
+        return when (Random.nextInt(3)) {
+            0 -> {
+                problem(
+                    "${a}cot(${b}x)",
+                    "${Rational(a, b)}ln{|sin(${b}x)|}",
+                    isIntegral = true
+                )
+            }
+            1 -> {
+                problem(
+                    "cot(${b}x)",
+                    "${Rational(1, b)}ln{|sin(${b}x)|}",
+                    isIntegral = true)
+            }
+            else -> {
+                problem(
+                    "${a}cot(x)",
+                    "${a}ln{|sin(x)|}",
+                    isIntegral = true
+                )
+            }
+        }
+
+    }
+}
