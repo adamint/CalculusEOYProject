@@ -63,16 +63,16 @@ enum class GeneratorType(val readable: String) {
     CONSTANT_TO_POWER_INT("Constant to a power"),
     E_INT("e"),
 
-    COS_INT("Cosine"),
-    SIN_INT("Sine"),
+    COS_INT("Cosine"),//
+    SIN_INT("Sine"),//
     COT_INT("Cotangent"),
     CSC_INT("Cosecant"),
-    CSC_SQUARED_INT("Cosecant squared"),
-    CSCCOT_INT("Cosecant cotangent"),
+    CSC_SQUARED_INT("Cosecant squared"),//
+    CSCCOT_INT("Cosecant cotangent"),//
     TAN_INT("Tangent"),
     SEC_INT("Secant"),
-    SEC_SQUARED_INT("Secant squared"),
-    SECTAN_INT("Secant Tangent"),
+    SEC_SQUARED_INT("Secant squared"),//
+    SECTAN_INT("Secant Tangent"),//
 
     ARCSIN_INT("Inverse sine"),
     ARCTAN_INT("Inverse tangent"),

@@ -27,7 +27,10 @@ class Rational(var numerator: Int, var denominator: Int) {
 
     override fun toString(): String {
         simplify()
-        return if (numerator != 0) "\\dfrac {$numerator}{$denominator}" else "0"
+        return if (numerator == 0) "0"
+        else if (numerator == 1 && denominator == 1) ""
+        else if (numerator == -1 && denominator == 1) "-"
+        else "\\dfrac {$numerator}{$denominator}"
     }
 }
 
