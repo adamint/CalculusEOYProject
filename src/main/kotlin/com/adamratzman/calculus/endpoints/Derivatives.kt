@@ -32,7 +32,7 @@ fun Website.derivatives() {
             else {
                 val map = getMap("Derivative | ${derivative.readable}", "derivative-$id", true)
                 map["derivative"] = derivative
-                map["generator-type"] = derivative.generatorType.jsString
+                map["generator-type"] = derivative.generatorType?.jsString
 
                 handlebars.render(map, "derivative.hbs")
             }

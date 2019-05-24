@@ -54,7 +54,7 @@ enum class GeneratorType(val readable: String) {
 
     // integrals
     CONSTANT_INT("Constant"),
-    CONSTANT_POWER_INT("Power Rule (Integrals)"),
+    CONSTANT_TO_POWER_INT("Power Rule (Integrals)"),
     ARCSIN_INT("Inverse Sine"),
 
     ;

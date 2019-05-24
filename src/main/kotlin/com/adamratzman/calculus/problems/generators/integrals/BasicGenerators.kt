@@ -14,7 +14,7 @@ class ConstantGenerator : ProblemGenerator(GeneratorType.CONSTANT_INT) {
     }
 }
 
-class PowerGenerator : ProblemGenerator(GeneratorType.CONSTANT_POWER_INT) {
+class PowerGenerator : ProblemGenerator(GeneratorType.CONSTANT_TO_POWER_INT) {
     override fun generate(): Problem {
         val base = genVariableNumber(10, 0, allowDouble = false).toInt()
 

@@ -9,13 +9,27 @@ enum class Integral(
     val before: String,
     val after: String
 ) {
-    GENERAL("General",
-        CalcType.BASIC,
+    //TODO change how the property rules are displayed so there is no +C
+
+    // properties
+    CONSTANT_MULTIPLE(
+        "General",
+        CalcType.PROPERTY,
         null,
-        "kf(u)",
-        "kF(u)"
+        "kf(x)",
+        "kf(x)"
     ),
-    CONSTANT("Constant",
+    ADDITION(
+        "Addition",
+        CalcType.PROPERTY,
+        null,
+        "f(x) + g(x)",
+        ""
+    ),
+
+    // basic rules
+    CONSTANT(
+        "Constant",
         CalcType.BASIC,
         GeneratorType.CONSTANT_INT,
         "",
@@ -28,16 +42,17 @@ enum class Integral(
         "x^n",
         "\\dfrac {x^{n+1}}{n+1}"
     ),
-    LN("Natural logarithm",
+    LN(
+        "Natural logarithm",
         CalcType.BASIC,
         null,
         "\\dfrac 1x",
         "\\ln{|x|}"
     ),
-    CONSTANT_POWER(
+    CONSTANT_TO_POWER(
         "Constant to a power",
         CalcType.BASIC,
-        GeneratorType.CONSTANT_POWER_INT,
+        GeneratorType.CONSTANT_TO_POWER_INT,
         "a^x",
         "\\dfrac {a^x}{lna}"
     ),
@@ -48,6 +63,8 @@ enum class Integral(
         "e^x",
         "e^x"
     ),
+
+    // inverse trig
     ARCSIN(
         "Inverse Sine",
         CalcType.INVERSE_TRIGONOMETRIC,
@@ -60,15 +77,17 @@ enum class Integral(
         CalcType.INVERSE_TRIGONOMETRIC,
         null,
         "\\dfrac 1{a^2 + x^2}",
-        "\\dfrac 1aarctan(\\dfrac xa)"
+        "\\dfrac 1aarctan\\dfrac xa"
     ),
     ARCSEC(
         "Inverse Secant",
         CalcType.INVERSE_TRIGONOMETRIC,
         null,
         "\\dfrac 1{x\\sqrt{x^2 - a^2}}",
-        "\\dfrac 1aarcsec(\\dfrac {|x|}a)"
+        "\\dfrac 1aarcsec\\dfrac {|x|}a"
     ),
+
+    // basic trig
     COS(
         "Cosine",
         CalcType.BASIC_TRIGONOMETRIC,
