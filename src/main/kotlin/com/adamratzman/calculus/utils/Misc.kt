@@ -4,6 +4,7 @@ import com.adamratzman.calculus.gson
 import com.google.common.math.IntMath.gcd
 import spark.ModelAndView
 import spark.template.handlebars.HandlebarsTemplateEngine
+import kotlin.math.absoluteValue
 
 fun HandlebarsTemplateEngine.render(map: Map<String, Any?>, name: String) = render(ModelAndView(map, name))
 
@@ -14,11 +15,19 @@ class Rational(var numerator: Int, var denominator: Int) {
         val gcm = gcm(numerator, denominator)
         numerator /= gcm
         denominator /= gcm
+
+        if (denominator < 0 && numerator < 0) {
+            numerator = numerator.absoluteValue
+            denominator = denominator.absoluteValue
+        } else if (denominator < 0 && numerator > 0) {
+            denominator = denominator.absoluteValue
+            numerator *= -1
+        }
     }
 
     override fun toString(): String {
         simplify()
-        return "\\dfrac {$numerator}{$denominator}"
+        return if (numerator != 0) "\\dfrac {$numerator}{$denominator}" else "0"
     }
 }
 
