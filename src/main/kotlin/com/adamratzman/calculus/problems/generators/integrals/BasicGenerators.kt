@@ -4,6 +4,7 @@ import com.adamratzman.calculus.problems.GeneratorType
 import com.adamratzman.calculus.problems.Problem
 import com.adamratzman.calculus.problems.ProblemGenerator
 import com.adamratzman.calculus.problems.genVariableNumber
+import com.adamratzman.calculus.utils.Rational
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 
@@ -19,7 +20,8 @@ class ConstantToPowerGenInt : ProblemGenerator(GeneratorType.CONSTANT_TO_POWER_I
     override fun generate(): Problem {
         val base = genVariableNumber(10, 0, allowDouble = false).toInt()
 
-        val powerMultiplier = if (Random.nextInt(5) != 0) 1 else genVariableNumber(10, 0, 1, allowDouble = false).toInt()
+        val powerMultiplier =
+            if (Random.nextInt(5) != 0) 1 else genVariableNumber(10, 0, 1, allowDouble = false).toInt()
 
         return if (powerMultiplier == 1)
             problem(
@@ -38,13 +40,19 @@ class ConstantToPowerGenInt : ProblemGenerator(GeneratorType.CONSTANT_TO_POWER_I
 
 class PowerGenInt : ProblemGenerator(GeneratorType.POWER_INT) {
     override fun generate(): Problem {
-        val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
-        val aSquared = a * a
-        return problem(
-            "\\dfrac{1}{\\sqrt{$aSquared - x^2}}",
-            "arcsin\\dfrac {x}{$a}",
-            isIntegral = true
-        )
+        val a = genVariableNumber(15, 0, 1, -1, allowDouble = false).toInt()
+        val b = genVariableNumber(15, 0, 1, allowDouble = false).toInt()
+
+        return if (Random.nextBoolean()) {
+            problem(
+                "${b}x^{$a}",
+                "${Rational(b, a + 1)}x^{${a + 1}}"
+            )
+        } else
+            problem(
+                "x^{$a}",
+                "${Rational(1, a + 1)}x^{${a + 1}}"
+            )
     }
 }
 
