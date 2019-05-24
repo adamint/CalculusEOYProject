@@ -85,10 +85,6 @@ fun Website.textbook() {
                 }
             }
 
-            get("/review") { request, _ ->
-                // TODO
-            }
-
             path("/:section") {
                 get("") { request, response ->
                     val chapterSectionPair =

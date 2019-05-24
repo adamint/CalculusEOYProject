@@ -18,7 +18,7 @@ class ConstantGenInt : ProblemGenerator(GeneratorType.CONSTANT_INT) {
 
 class ConstantToPowerGenInt : ProblemGenerator(GeneratorType.CONSTANT_TO_POWER_INT) {
     override fun generate(): Problem {
-        val base = genVariableNumber(10, 0, allowDouble = false).toInt()
+        val base = genVariableNumber(10, 0, allowDouble = false).toInt().absoluteValue
 
         val powerMultiplier =
             if (Random.nextInt(5) != 0) 1 else genVariableNumber(10, 0, 1, allowDouble = false).toInt()
@@ -26,13 +26,13 @@ class ConstantToPowerGenInt : ProblemGenerator(GeneratorType.CONSTANT_TO_POWER_I
         return if (powerMultiplier == 1)
             problem(
                 "$base^x",
-                "\\dfrac 1{ln$base}$base^x",
+                "\\dfrac 1{ln($base)}$base^x",
                 isIntegral = true
             )
         else
             problem(
-                "$base^{${powerMultiplier}x}",
-                "\\dfrac 1{${powerMultiplier}ln$base}$base^{${powerMultiplier}x}",
+                "($base)^{${powerMultiplier}x}",
+                "\\dfrac 1{${powerMultiplier}ln($base)}($base)^{${powerMultiplier}x}",
                 isIntegral = true
             )
     }

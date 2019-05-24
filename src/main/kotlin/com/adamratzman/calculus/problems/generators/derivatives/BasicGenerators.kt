@@ -4,6 +4,7 @@ import com.adamratzman.calculus.problems.GeneratorType
 import com.adamratzman.calculus.problems.Problem
 import com.adamratzman.calculus.problems.ProblemGenerator
 import com.adamratzman.calculus.problems.genVariableNumber
+import kotlin.math.absoluteValue
 import kotlin.random.Random
 
 class CoefficientGenDer : ProblemGenerator(GeneratorType.COEFFICIENT_DER) {
@@ -66,8 +67,8 @@ class ConstantToPowerGenDer : ProblemGenerator(GeneratorType.CONSTANT_TO_POWER_D
 
 class LogGenDer : ProblemGenerator(GeneratorType.LOG_DER) {
     override fun generate(): Problem {
-        val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt()
-        val const = genVariableNumber(10, 0, 1, allowDouble = false).toInt()
+        val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
+        val const = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         return if (Random.nextBoolean()) {
             problem(
                 "log_$a(${const}x)",
@@ -82,7 +83,7 @@ class LogGenDer : ProblemGenerator(GeneratorType.LOG_DER) {
 
 class LnGenDer : ProblemGenerator(GeneratorType.LN_DER) {
     override fun generate(): Problem {
-        val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt()
+        val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         return problem(
             "ln(${a}x)",
             "\\dfrac ${a}x"
