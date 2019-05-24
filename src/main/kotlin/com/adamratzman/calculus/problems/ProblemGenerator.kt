@@ -1,6 +1,7 @@
 package com.adamratzman.calculus.problems
 
 import org.reflections.Reflections
+import java.lang.IllegalArgumentException
 import kotlin.random.Random
 
 internal val problemGenerators: HashMap<GeneratorType, ProblemGenerator> = hashMapOf()
@@ -22,15 +23,18 @@ abstract class ProblemGenerator(val type: GeneratorType) {
 
     abstract fun generate(): Problem
 
-    fun newProblem(): Problem {
-        val problem = generate()
-        return if (Random.nextInt(6) > 0) problem
-        else problem.copy(_question = problem.answer, answer = problem.question, question = problem.answer)
-    }
+    fun newProblem(): Problem = generate()
 
-    fun problem(question: String, answer: String, isIntegral: Boolean = false) =
-        if (!isIntegral) Problem(question, answer, url)
-        else Problem(question, "$answer + C", url, "\\int $question dx")
+    fun problem(question: String, answer: String, isIntegral: Boolean = false): Problem {
+        val switch = Random.nextInt(6) == 0
+        return when {
+            !isIntegral && !switch -> Problem(question, answer, url)
+            !isIntegral && switch -> Problem(answer, "$question + C", url, "\\int $answer dx")
+            isIntegral && !switch -> Problem(question, "$answer + C", url, "\\int $question dx")
+            isIntegral && switch -> Problem("$answer + C", question, url)
+            else -> throw IllegalArgumentException()
+        }
+    }
 
     fun generate(number: Int) = (1..number).map { generate() }
 }
@@ -97,7 +101,11 @@ fun genVariableNumber(bound: Int = 100, vararg notAllowed: Number, allowDouble: 
         Random.nextDouble(bound.toDouble()).trimToTwoDecimals() * multiplier
     } else Random.nextInt(bound) * multiplier.toDouble()
 
-    return if (number * multiplier in notAllowed.map { it.toDouble() }) genVariableNumber(bound, *notAllowed, allowDouble = allowDouble)
+    return if (number * multiplier in notAllowed.map { it.toDouble() }) genVariableNumber(
+        bound,
+        *notAllowed,
+        allowDouble = allowDouble
+    )
     else number
 }
 
