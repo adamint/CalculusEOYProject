@@ -21,14 +21,14 @@ enum class Derivative(
     PRODUCT(
         "Product",
         null,
-        CalcType.BASIC,
+        CalcType.PROPERTY,
         "uv",
         "uv' + vu'"
     ),
     QUOTIENT(
         "Quotient",
         null,
-        CalcType.BASIC,
+        CalcType.PROPERTY,
         "\\dfrac uv",
         "\\dfrac {vu' - uv'}{v^2}"
     ),

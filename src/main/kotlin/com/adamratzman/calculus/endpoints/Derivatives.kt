@@ -13,9 +13,11 @@ fun Website.derivatives() {
             val basic = Derivative.values().filter { it.type == CalcType.BASIC }
             val trig = Derivative.values().filter { it.type == CalcType.BASIC_TRIGONOMETRIC }
             val inverseTrig = Derivative.values().filter { it.type == CalcType.INVERSE_TRIGONOMETRIC }
+            val properties = Derivative.values().filter{ it.type == CalcType.PROPERTY }
 
             val map = getMap("Derivative List", "derivatives", false)
             map["types"] = listOf(
+                "Properties" to properties,
                 "Basic" to basic,
                 "Trig" to trig,
                 "Inverse Trig" to inverseTrig
