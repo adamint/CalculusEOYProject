@@ -6,7 +6,7 @@ import spark.Spark.get
 
 fun Website.reference() {
     get("/reference") { _, _ ->
-        val map = getMap("Calculus References","references",true)
+        val map = getMap("Calculus References", "references", true)
         map["extended-references"] = extendedReferences
 
         handlebars.render(map, "reference.hbs")

@@ -78,7 +78,6 @@ fun Website.textbook() {
                         }
                         .sortedBy { it.second }
 
-
                     map["notes-header"] =
                         "Notes for <a href='/textbook/${chapter.chapterNumber}'>Chapter ${chapter.chapterNumber}</a>"
 
@@ -151,7 +150,7 @@ fun Website.textbook() {
                                     val csString = "${chapter.chapterNumber}-$sectionNumber"
                                     val pagesQuantity = section.reviewPages.toString()[i].toString().toInt()
 
-                                    Pair(csString.replace("-","."), csString) to (1..pagesQuantity).map { number ->
+                                    Pair(csString.replace("-", "."), csString) to (1..pagesQuantity).map { number ->
                                         "Page $number" to "textbook/chapter${chapter.chapterNumber}/review/$csString/problems$csString/${csString}page$number.JPG"
                                     }
                                 }
@@ -171,7 +170,6 @@ fun Website.textbook() {
                         response.redirect("/textbook")
                     } else {
                         val (chapter, section) = chapterSectionPair
-
 
                         val possibleSectionNotes = section.notesNames
 

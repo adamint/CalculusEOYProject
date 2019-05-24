@@ -1,16 +1,31 @@
 package com.adamratzman.calculus
 
 import aws
-import com.adamratzman.calculus.endpoints.*
+import com.adamratzman.calculus.endpoints.derivatives
+import com.adamratzman.calculus.endpoints.home
+import com.adamratzman.calculus.endpoints.integrals
+import com.adamratzman.calculus.endpoints.problems
+import com.adamratzman.calculus.endpoints.reference
+import com.adamratzman.calculus.endpoints.shortcuts
+import com.adamratzman.calculus.endpoints.textbook
 import com.adamratzman.calculus.problems.addGenerators
-import com.adamratzman.calculus.utils.*
+import com.adamratzman.calculus.utils.Chapter
+import com.adamratzman.calculus.utils.Section
+import com.adamratzman.calculus.utils.Upload
+import com.adamratzman.calculus.utils.getAllChapters
+import com.adamratzman.calculus.utils.getAllClassReferences
+import com.adamratzman.calculus.utils.getAllReferences
+import com.adamratzman.calculus.utils.getRandomColor
+import com.adamratzman.calculus.utils.render
 import com.github.jknack.handlebars.Handlebars
 import com.github.jknack.handlebars.Options
 import com.google.gson.Gson
-import spark.Spark.*
+import spark.Spark.before
+import spark.Spark.exception
+import spark.Spark.notFound
+import spark.Spark.port
 import spark.staticfiles.StaticFilesConfiguration
 import spark.template.handlebars.HandlebarsTemplateEngine
-import java.io.File
 
 val handlebars = HandlebarsTemplateEngine()
 val gson = Gson()
@@ -107,5 +122,5 @@ fun getHerokuAssignedPort(): Int {
     return if (processBuilder.environment()["PORT"] != null) {
         Integer.parseInt(processBuilder.environment()["PORT"])
     } else 80
-//return default port if heroku-port isn't set (i.e. on localhost)
+// return default port if heroku-port isn't set (i.e. on localhost)
 }

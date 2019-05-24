@@ -9,7 +9,7 @@ enum class Integral(
     val before: String,
     val after: String
 ) {
-    //TODO change how the property rules are displayed so there is no +C
+    // TODO change how the property rules are displayed so there is no +C
 
     // properties
     CONSTANT_MULTIPLE(
@@ -158,5 +158,4 @@ enum class Integral(
         "sec(x)tan(x)",
         "sec(x)"
     ),
-
 }

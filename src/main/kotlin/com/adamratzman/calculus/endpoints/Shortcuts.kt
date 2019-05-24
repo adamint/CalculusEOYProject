@@ -7,11 +7,11 @@ fun shortcuts() {
         response.redirect("https://github.com/adamint/CalculusEOYProject")
     }
 
-    get("/canvas") {_, response ->
+    get("/canvas") { _, response ->
         response.redirect("https://carmel.instructure.com")
     }
 
-    get("/khan") {_, response ->
+    get("/khan") { _, response ->
         response.redirect("https://www.khanacademy.org/math/ap-calculus-ab")
     }
 }

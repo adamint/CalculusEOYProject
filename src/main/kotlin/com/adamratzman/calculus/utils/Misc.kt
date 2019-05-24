@@ -33,12 +33,12 @@ fun Double.toFraction(): Rational {
     }
 
     var numerator = Math.round(double).toInt()
-    val gcd = gcd (numerator, denomerator)
+    val gcd = gcd(numerator, denomerator)
 
     numerator /= gcd
     denomerator /= gcd
 
-    return Rational(numerator,denomerator)
+    return Rational(numerator, denomerator)
 }
 
 fun Any.toJson() = gson.toJson(this)

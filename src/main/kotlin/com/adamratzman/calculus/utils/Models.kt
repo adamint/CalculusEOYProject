@@ -30,7 +30,7 @@ data class Section(
 
     val hasNotes: Boolean = notesNames.isNotEmpty()
 }
-//TODO descriptions
+// TODO descriptions
 
 data class Link(val name: String, val path: String)
 
@@ -62,5 +62,5 @@ data class Choice(val value: String, val label: String)
 
 fun getRandomColor(): String {
     val underlineColor = Color.getHSBColor(Random.nextFloat(), Random.nextFloat(), 0.8f)
-    return String.format("#%02x%02x%02x", underlineColor.red, underlineColor.green, underlineColor.blue);
+    return String.format("#%02x%02x%02x", underlineColor.red, underlineColor.green, underlineColor.blue)
 }

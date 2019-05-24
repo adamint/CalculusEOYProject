@@ -16,7 +16,6 @@ class ArcSinGeneratorInt : ProblemGenerator(GeneratorType.ARCSIN_INT) {
             isIntegral = true
         )
     }
-
 }
 
 class ArcTanGeneratorInt : ProblemGenerator(GeneratorType.ARCTAN_INT) {
@@ -29,7 +28,6 @@ class ArcTanGeneratorInt : ProblemGenerator(GeneratorType.ARCTAN_INT) {
             isIntegral = true
         )
     }
-
 }
 
 /*

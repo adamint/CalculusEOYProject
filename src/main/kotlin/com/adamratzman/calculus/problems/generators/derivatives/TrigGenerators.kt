@@ -20,5 +20,4 @@ class SinGenerator : ProblemGenerator(GeneratorType.SIN_DER) {
             "${a}cos(${a}x)"
         )
     }
-
 }
