@@ -80,8 +80,8 @@ class CscGenDer : ProblemGenerator(GeneratorType.CSC_DER) {
                 "${-const * a}csc(${a}x)cot(${a}x)"
             )
         } else problem(
-            "cos(${a}x)",
-            "${-a}sin(${a}x)"
+            "csc(${a}x)",
+            "-${a}csc(${a}x)cot(${a}x)"
         )
     }
 }
