@@ -5,8 +5,7 @@
                 $("#" + element).html(problemHtml);
                 $("#problem-div").prepend("<h4 class='bold uk-margin-small-top'>" + title + "</h4>")
 
-                let math = MathJax.Hub.getAllJax("math-txt")[0];
-                MathJax.Hub.Queue(["Typeset", math, question]);
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById("math-txt")]);
             });
         });
     }

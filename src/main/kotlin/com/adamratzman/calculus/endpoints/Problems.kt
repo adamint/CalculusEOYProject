@@ -12,6 +12,10 @@ import spark.Spark.path
 
 fun Website.problems() {
     path("/problems") {
+        get("") { request, _ ->
+
+        }
+
         get("/view") { request, response ->
             val type = request.queryParams("type")
                 ?.let { type -> GeneratorType.values().find { type.equals(it.name, true) } }
