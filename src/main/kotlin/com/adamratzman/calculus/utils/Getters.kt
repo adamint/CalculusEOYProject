@@ -173,7 +173,7 @@ fun getAllClassReferences(): List<Link> = listOf(
 
 fun getSiteContent(path: String) = Jsoup.connect(generateUrl(path)).get().html()
 
-fun generateUrl(path: String) = "http://localhost$path"
+fun generateUrl(path: String) = "https://ap-calculus-review-sohalski.herokuapp.com$path"
 
 fun notesList(chapter: Int, section: Any, days: Int) = (1..days)
     .map { day -> "notes$chapter-${section}day$day.pdf" }
