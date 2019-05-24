@@ -4,7 +4,8 @@
     <div class="uk-margin-small-top uk-section uk-section-large">
         <h2 class="light uk-text-center">A comprehensive reference database for AP Calculus AB</h2>
 
-        <h2 class="moderate-bold uk-text-center"><a href="/reference" class="black">Quick References {{> open-in-new.hbs }}</a></h2>
+        <h2 class="moderate-bold uk-text-center"><a href="/reference" class="black">Quick
+            References {{> open-in-new.hbs }}</a></h2>
 
         <div class="uk-margin-auto uk-text-center">
             {{#each references}}
@@ -13,7 +14,8 @@
             {{/each}}
         </div>
 
-        <h2 class="moderate-bold uk-text-center"><a href="/textbook" class="black">Textbook {{> open-in-new.hbs }}</a></h2>
+        <h2 class="moderate-bold uk-text-center"><a href="/textbook" class="black">Textbook {{> open-in-new.hbs }}</a>
+        </h2>
         <div class="uk-margin-auto">
             {{#each chapters}}
                 <h3 class="uk-text-center"><a href="/textbook/{{chapterNumber}}" class="black">Chapter {{chapterNumber}}
@@ -26,7 +28,7 @@
                                     | {{name}} </a>
                                 <div class="uk-accordion-content rem-1">Go to <a
                                         href="/textbook/{{chapterNumber}}/{{sectionNumber}}">this section.</a>
-                                    Section {{chapterNumber}}.{{sectionNumber}} is about {{description}}</div>
+                                </div>
                             </li>
                         {{/each}}
                     </ul>

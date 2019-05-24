@@ -20,7 +20,6 @@ data class Section(
     val sectionNumber: Any,
     val name: String,
     val reviewPages: Int?,
-    val description: String = "section description",
     val isImportant: Boolean = true,
     val notesNames: List<String> = listOf("notes$chapter-$sectionNumber.pdf"),
     val concepts: List<Concept> = listOf(),
