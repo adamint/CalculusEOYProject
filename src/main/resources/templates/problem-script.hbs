@@ -6,7 +6,7 @@
                 $("#problem-div").prepend("<h4 class='bold uk-margin-small-top'>" + title + "</h4>")
 
                 let math = MathJax.Hub.getAllJax("math-txt")[0];
-                MathJax.Hub.Queue(["Text", math, question]);
+                MathJax.Hub.Queue(["Typeset", math, question]);
             });
         });
     }
