@@ -36,7 +36,7 @@ enum class Derivative(
     // basic
     COEFFICIENT(
         "Coefficient",
-        null,
+        GeneratorType.COEFFICIENT_DER,
         CalcType.BASIC,
         "cx",
         "c"
@@ -58,28 +58,28 @@ enum class Derivative(
     ),
     E(
         "e",
-        null,
+        GeneratorType.E_DER,
         CalcType.BASIC,
         "e^x",
         "e^x"
     ),
     CONSTANT_TO_POWER(
         "Constant to a power",
-        null,
+        GeneratorType.CONSTANT_TO_POWER_DER,
         CalcType.BASIC,
         "a^x",
         "a^xln(a)"
     ),
     LOG(
         "Logarithm",
-        null,
+        GeneratorType.LOG_DER,
         CalcType.BASIC,
         "log_ax",
         "\\dfrac 1{xln(a)}"
     ),
     LN(
         "Natural Logarithm",
-        null,
+        GeneratorType.LN_DER,
         CalcType.BASIC,
         "ln(x)",
         "\\dfrac 1x"
@@ -103,35 +103,35 @@ enum class Derivative(
     ),
     COS(
         "Cosine",
-        null,
+        GeneratorType.COS_DER,
         CalcType.BASIC_TRIGONOMETRIC,
         "cos(x)",
         "-sin(x)"
     ),
     TAN(
         "Tangent",
-        null,
+        GeneratorType.TAN_DER,
         CalcType.BASIC_TRIGONOMETRIC,
         "tan(x)",
         "sec^2(x)"
     ),
     SEC(
         "Secant",
-        null,
+        GeneratorType.SEC_DER,
         CalcType.BASIC_TRIGONOMETRIC,
         "sec(x)",
         "sec(x)tan(x)"
     ),
     COT(
         "Cotangent",
-        null,
+        GeneratorType.COT_DER,
         CalcType.BASIC_TRIGONOMETRIC,
         "cot(x)",
         "-csc^2(x)"
     ),
     CSC(
         "Cosecant",
-        null,
+        GeneratorType.CSC_DER,
         CalcType.BASIC_TRIGONOMETRIC,
         "csc(x)",
         "-csc(x)cot(x)"
@@ -147,35 +147,35 @@ enum class Derivative(
     ),
     ARCTAN(
         "Inverse Tangent",
-        null,
+        GeneratorType.ARCTAN_DER,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arctan(x)",
         "\\dfrac 1{1 + x^2}"
     ),
     ARCSEC(
         "Inverse Secant",
-        null,
+        GeneratorType.ARCSEC_DER,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arcsec(x)",
         "\\dfrac 1{|x|\\sqrt{x^2 - 1}}"
     ),
     ARCCOS(
         "Inverse Sine",
-        GeneratorType.ARCSIN_DER,
+        GeneratorType.ARCCOS_DER,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arccos(x)",
         "\\dfrac {-1}{\\sqrt{1-x^2}}"
     ),
     ARCCOT(
         "Inverse Tangent",
-        null,
+        GeneratorType.ARCCOT_DER,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arccot(x)",
         "\\dfrac {-1}{1 + x^2}"
     ),
     ARCCSC(
         "Inverse Secant",
-        null,
+        GeneratorType.ARCCSC_DER,
         CalcType.INVERSE_TRIGONOMETRIC,
         "arccsc(x)",
         "\\dfrac {-1}{|x|\\sqrt{x^2 - 1}}"

@@ -38,7 +38,7 @@ enum class Integral(
     POWER(
         "Power",
         CalcType.BASIC,
-        null,
+        GeneratorType.POWER_INT,
         "x^n",
         "\\dfrac {x^{n+1}}{n+1}"
     ),
@@ -59,7 +59,7 @@ enum class Integral(
     E(
         "e",
         CalcType.BASIC,
-        null,
+        GeneratorType.E_INT,
         "e^x",
         "e^x"
     ),
@@ -75,14 +75,14 @@ enum class Integral(
     ARCTAN(
         "Inverse Tangent",
         CalcType.INVERSE_TRIGONOMETRIC,
-        null,
+        GeneratorType.ARCTAN_INT,
         "\\dfrac 1{a^2 + x^2}",
         "\\dfrac 1aarctan\\dfrac xa"
     ),
     ARCSEC(
         "Inverse Secant",
         CalcType.INVERSE_TRIGONOMETRIC,
-        null,
+        GeneratorType.ARCSEC_INT,
         "\\dfrac 1{x\\sqrt{x^2 - a^2}}",
         "\\dfrac 1aarcsec\\dfrac {|x|}a"
     ),
@@ -91,70 +91,70 @@ enum class Integral(
     COS(
         "Cosine",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.COS_INT,
         "cos(x)",
         "sin(x)"
     ),
     SIN(
         "Sine",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.SIN_INT,
         "sin(x)",
         "-cos(x)"
     ),
     COT(
         "Cotangent",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.COT_INT,
         "cot(x)",
         "ln{|sin(x)|}"
     ),
     CSC(
         "Cosecant",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.CSC_INT,
         "csc(x)",
         "-ln{|csc(x) + cot(x)|}"
     ),
     CSC_SQUARED(
         "Cosecant Squared",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.CSC_SQUARED_INT,
         "csc^2(x)",
         "-cot(x)"
     ),
     CSCCOT(
         "Cosecant Cotangent",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.CSCCOT_INT,
         "csc(x)cot(x)",
         "-csc(x)"
     ),
     TAN(
         "Tangent",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.TAN_INT,
         "tan(x)",
         "-ln{|cos(x)|}"
     ),
     SEC(
         "Secant",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.SEC_INT,
         "sec(x)",
         "ln{|sec(x) + tan(x)|}"
     ),
     SEC_SQUARED(
         "Secant Squared",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.SEC_SQUARED_INT,
         "sec^2(x)",
         "tan(x)"
     ),
-    SEC_TAN(
+    SECTAN(
         "Secant Tangent",
         CalcType.BASIC_TRIGONOMETRIC,
-        null,
+        GeneratorType.SECTAN_INT,
         "sec(x)tan(x)",
         "sec(x)"
     ),

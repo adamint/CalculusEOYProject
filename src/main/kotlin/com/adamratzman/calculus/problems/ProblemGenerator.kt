@@ -45,17 +45,49 @@ fun addGenerators() {
 
 enum class GeneratorType(val readable: String) {
     // derivatives
+    COEFFICIENT_DER("Coefficient"),
     CONSTANT_DER("Constant"),
-    POWER_DER("Power Rule"),
+    POWER_DER("Power"),
+    E_DER("e"),
+    CONSTANT_TO_POWER_DER("Constant to a power"),
+    LOG_DER("Logarithm"),
+    LN_DER("Natural logarithm"),
 
     SIN_DER("Sine"),
+    COS_DER("Cosine"),
+    TAN_DER("Tangent"),
+    SEC_DER("Secant"),
+    CSC_DER("Cosecant"),
+    COT_DER("Cotangent"),
 
     ARCSIN_DER("Inverse Sine"),
+    ARCTAN_DER("Inverse Tangent"),
+    ARCSEC_DER("Inverse Secant"),
+    ARCCOS_DER("Inverse Cosine"),
+    ARCCOT_DER("Inverse Cotangent"),
+    ARCCSC_DER("Inverse Cosecant"),
+
 
     // integrals
     CONSTANT_INT("Constant"),
-    CONSTANT_TO_POWER_INT("Power Rule (Integrals)"),
-    ARCSIN_INT("Inverse Sine"),
+    POWER_INT("Power"),
+    CONSTANT_TO_POWER_INT("Constant to a power"),
+    E_INT("e"),
+
+    COS_INT("Cosine"),
+    SIN_INT("Sine"),
+    COT_INT("Cotangent"),
+    CSC_INT("Cosecant"),
+    CSC_SQUARED_INT("Cosecant squared"),
+    CSCCOT_INT("Cosecant cotangent"),
+    TAN_INT("Tangent"),
+    SEC_INT("Secant"),
+    SEC_SQUARED_INT("Secant squared"),
+    SECTAN_INT("Secant Tangent"),
+
+    ARCSIN_INT("Inverse sine"),
+    ARCTAN_INT("Inverse tangent"),
+    ARCSEC_INT("Inverse secant"),
 
     ;
 
