@@ -1,8 +1,5 @@
 package com.adamratzman.calculus.problems
 
-import com.adamratzman.calculus.problems.generators.derivatives.ConstantGenerator
-import com.adamratzman.calculus.problems.generators.derivatives.PowerRuleGenerator
-import com.adamratzman.calculus.problems.generators.derivatives.SinGenDer
 import org.reflections.Reflections
 import kotlin.random.Random
 
