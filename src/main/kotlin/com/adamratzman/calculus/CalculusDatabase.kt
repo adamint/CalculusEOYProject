@@ -65,7 +65,7 @@ class Website {
 
     internal fun getMap(pageTitle: String, pageId: String, positionBottom: Boolean): MutableMap<String, Any?> {
         val map = mutableMapOf<String, Any?>()
-        map["title"] = "AP Calculus Database | $pageTitle"
+        map["title"] = "AP Calculus | $pageTitle"
         map["page"] = pageId
         map["position-bottom"] = positionBottom
         map["color"] = getRandomColor()

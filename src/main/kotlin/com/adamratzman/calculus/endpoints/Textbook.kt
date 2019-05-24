@@ -91,19 +91,75 @@ fun Website.textbook() {
             }
 
             path("/:section") {
-                get("/") { request, _ ->
-                    val chapter = request.params(":chapter")?.toIntOrNull()
-                    val section = request.params(":section")
+                get("") { request, response ->
+                    val chapterSectionPair =
+                        getSection(
+                            request.params(":chapter").toInt(),
+                            request.params(":section").let { it.toIntOrNull() ?: it })
+                    if (chapterSectionPair == null) {
+                        response.redirect("/textbook")
+                    } else {
+                        val (chapter, section) = chapterSectionPair
 
-                    ""
+                        val map = getMap(
+                            "Section ${chapter.chapterNumber}.${section.sectionNumber}",
+                            "section$section",
+                            false
+                        )
+                        map["chapter"] = chapter
+                        map["section"] = section
+                        map["importance-explanation"] = """An 'Important Section' is one whose content may be
+                            |on the AP Calculus AB exam and whose content is not repeated in a future section.
+                        """.trimMargin()
+
+                        handlebars.render(map, "section-home.hbs")
+                    }
                 }
 
-                get("/practice") { request, _ ->
-
+                get("/practice") { request, response ->
+                    response.redirect("/textbook/${request.params(":chapter")}/${request.params(":section")}/review")
                 }
 
-                get("/review") { request, _ ->
-                    // TODO
+                get("/review") { request, response ->
+                    val chapterSectionPair =
+                        getSection(
+                            request.params(":chapter").toInt(),
+                            request.params(":section").let { it.toIntOrNull() ?: it })
+                    if (chapterSectionPair == null) {
+                        response.redirect("/textbook")
+                    } else {
+                        val (chapter, section) = chapterSectionPair
+                        if (section.reviewPages == null) {
+                            response.redirect("/textbook/${chapter.chapterNumber}/${section.sectionNumber}")
+                        } else {
+                            val map = getMap(
+                                "Section ${chapter.chapterNumber}.${section.sectionNumber} Review",
+                                "s$chapter$section",
+                                false
+                            )
+
+                            map["chapter"] = chapter
+                            map["section"] = section
+
+                            if (section.sectionNumber !is String) {
+                                val csString = "${chapter.chapterNumber}-${section.sectionNumber}"
+                                map["image-links"] = (1..section.reviewPages).map { number ->
+                                    "Page $number" to "textbook/chapter${chapter.chapterNumber}/review/$csString/problems$csString/${csString}page$number.JPG"
+                                }
+                            } else {
+                                map["image-link-days-list"] = section.sectionNumber.split("-").mapIndexed { i, sectionNumber ->
+                                    val csString = "${chapter.chapterNumber}-$sectionNumber"
+                                    val pagesQuantity = section.reviewPages.toString()[i].toString().toInt()
+
+                                    Pair(csString.replace("-","."), csString) to (1..pagesQuantity).map { number ->
+                                        "Page $number" to "textbook/chapter${chapter.chapterNumber}/review/$csString/problems$csString/${csString}page$number.JPG"
+                                    }
+                                }
+                            }
+
+                            handlebars.render(map, "section-review.hbs")
+                        }
+                    }
                 }
 
                 get("/notes") { request, response ->

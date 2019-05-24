@@ -10,6 +10,8 @@ data class Chapter(
     val concepts: List<Concept> = listOf(),
     val additionalResources: List<Link>? = null
 ) {
+    val hasChapterConcepts: Boolean = concepts.isNotEmpty()
+
     fun getNotes() = sections.map { it.notesNames }.flatten().map { "chapter$chapterNumber/notes/$it" }
 }
 
@@ -17,10 +19,15 @@ data class Section(
     val chapter: Int,
     val sectionNumber: Any,
     val name: String,
+    val reviewPages: Int?,
     val description: String = "section description",
+    val isImportant: Boolean = true,
     val notesNames: List<String> = listOf("notes$chapter-$sectionNumber.pdf"),
-    val concepts: List<Concept> = listOf()
+    val concepts: List<Concept> = listOf(),
+    val additionalResources: List<Link>? = null
 ) {
+    val hasSectionConcepts: Boolean = concepts.isNotEmpty()
+
     val hasNotes: Boolean = notesNames.isNotEmpty()
 }
 //TODO descriptions

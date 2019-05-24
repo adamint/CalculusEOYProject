@@ -42,6 +42,10 @@ html, a, nav, li {
     font-size: 1.2rem;
 }
 
+.left-subheading-margin {
+    margin-left: 40%;
+}
+
 .disable-link-highlighting. a, a:hover, a:visited {
     border: none;
     outline: none;

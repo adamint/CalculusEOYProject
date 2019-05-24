@@ -6,28 +6,30 @@
             <h2 class="moderate-bold uk-text-center uk-margin-medium-bottom">
                 Chapter {{chapterNumber}} - <b>{{name}}</b></h2>
 
-            <div style="margin-left: 40%">
-                <h3 class="light rem-1-8"><u>Important concepts</u></h3>
-                <ul class="">
-                    {{#each concepts}}
-                        <li>
-                            <p class="rem-1-2">
-                                {{#if url}}<a class="black" href="{{url}}">{{/if}}
-                                {{concept}}
-                                {{#if url}} {{> open-in-new.hbs }}</a>{{/if}}
-                            </p>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
+            {{#if hasChapterConcepts}}
+                <div class="left-subheading-margin">
+                    <h3 class="light rem-1-8"><u>Important concepts</u></h3>
+                    <ul class="">
+                        {{#each concepts}}
+                            <li>
+                                <p class="rem-1-2">
+                                    {{#if url}}<a class="black" href="{{url}}">{{/if}}
+                                    {{concept}}
+                                    {{#if url}} {{> open-in-new.hbs }}</a>{{/if}}
+                                </p>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
 
-            <div style="margin-left: 40%">
+            <div class="left-subheading-margin">
                 <h3 class="light"><a class="black"
                                      href="/textbook/{{chapterNumber}}/notes"><u>Notes {{> open-in-new.hbs }}</u></a>
                 </h3>
             </div>
 
-            <div class="uk-width-1-4" style="margin-left: 40%">
+            <div class="uk-width-1-4 left-subheading-margin">
                 <h3 class="light"><u>Sections</u></h3>
                 <ul uk-accordion>
                     {{#each sections}}
@@ -45,10 +47,10 @@
                             <div class="uk-accordion-content rem-1">
                                 <p>
                                     This section is about {{description}}.
-                                    See <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}">more</a>.
                                 </p>
                                 <p>
-                                    Want to practice this content? This section includes a review worksheet.
+                                    Open {{chapterNumber}}.{{sectionNumber}} in
+                                    <a href="/textbook/{{chapterNumber}}/{{sectionNumber}}">a new tab →</a>
                                 </p>
                             </div>
                         </li>
@@ -57,7 +59,7 @@
             </div>
 
             {{#if additionalResources}}
-                <div style="margin-left: 40%">
+                <div class="left-subheading-margin">
                     <h3 class="light"><u>Additional Resources</u></h3>
                     <ul class="uk-list">
                         {{#each additionalResources}}
@@ -69,7 +71,7 @@
                 </div>
             {{/if}}
 
-            <div style="margin-left: 40%">
+            <div class="left-subheading-margin">
                 <h3 class="light"><u>Review</u></h3>
                 <ul class="uk-list uk-list-bullet">
                     <li>
