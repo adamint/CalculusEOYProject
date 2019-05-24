@@ -86,7 +86,7 @@ enum class Theorem(
         TheoremType.INTEGRAL,
         "function ${Math("f")}",
         "${Math("f")} is integrable on ${Math("(a,b)")}",
-        math = "${Math("\\lim \\limits_{x \\to \\infty}\\sum_{i=1}^{n}f(c_i)\\Delta x_i = \\int_a^b f(x)dx")}"
+        math = "${Math("\\lim \\limits_{n \\to \\infty}\\sum_{i=1}^{n}f(c_i)\\Delta x_i = \\int_a^b f(x)dx")}"
     ),
 
     FUN_THEOREM(
