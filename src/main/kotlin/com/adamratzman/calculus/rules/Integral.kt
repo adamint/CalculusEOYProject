@@ -158,4 +158,8 @@ enum class Integral(
         "sec(x)tan(x)",
         "sec(x)"
     ),
+
+    ;
+
+    val isProperty: Boolean = type == CalcType.PROPERTY
 }

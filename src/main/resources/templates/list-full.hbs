@@ -28,7 +28,11 @@
                                         \( \dfrac d{dx}[{{before}}] = {{after}} \)
                                     {{else}}
                                         {{#if integral}}
-                                            \( \int {{before}} dx = {{after}} + C \)
+                                            {{#if isProperty}}
+                                                {{before}} = {{after}}
+                                            {{else}}
+                                                \( \int {{before}} dx = {{after}} + C \)
+                                            {{/if}}
                                         {{else}}
                                             \( {{math}} \)
                                         {{/if}}
