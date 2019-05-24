@@ -32,6 +32,8 @@ class ArcTanGeneratorInt : ProblemGenerator(GeneratorType.ARCTAN_INT) {
 
 }
 
+/*
+
 class ArcSecGeneratorInt : ProblemGenerator(GeneratorType.ARCSEC_INT) {
     override fun generate(): Problem {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
@@ -45,6 +47,7 @@ class ArcSecGeneratorInt : ProblemGenerator(GeneratorType.ARCSEC_INT) {
 
 }
 
+
 class PowerGeneratorInt : ProblemGenerator(GeneratorType.POWER_INT) {
     override fun generate(): Problem {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
@@ -57,3 +60,4 @@ class PowerGeneratorInt : ProblemGenerator(GeneratorType.POWER_INT) {
     }
 
 }
+ */

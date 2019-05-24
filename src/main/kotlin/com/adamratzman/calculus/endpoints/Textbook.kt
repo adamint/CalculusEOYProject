@@ -9,6 +9,27 @@ import spark.Spark.path
 fun Website.textbook() {
     val textbookFiles = uploads.getFilesInDirectory("textbook")
 
+    get("/notes") { request, _ ->
+        val map = getMap("All Notes", "notes", false)
+
+        map["notes-header"] = "All Calculus Notes"
+
+        map["notes"] = textbookFiles
+            .filter {
+                it.fileName.contains("/notes/notes.+.pdf".toRegex())
+            }
+            .sortedBy { it.fileName }
+            .map { upload ->
+                val name = "Section ${upload.fileName.split("/")[2].removePrefix("notes")
+                    .removeSuffix(".pdf").replaceFirst("-", ".")}"
+
+                "/textbook/${upload.fileName}" to
+                        if (!name.contains("day\\d".toRegex())) name
+                        else name.substring(0, name.indexOf("day")) + " Day " + name.substring(name.indexOf("day") + 3)
+            }
+
+        handlebars.render(map, "notes-options.hbs")
+    }
     path("/textbook") {
         get("") { _, response -> response.redirect("/textbook/") }
 
@@ -24,6 +45,51 @@ fun Website.textbook() {
         }
 
         path("/:chapter") {
+            get("") { request, response ->
+                val chapter = request.params(":chapter")?.toIntOrNull()
+                    ?.let { chapters.find { chapter -> chapter.chapterNumber == it } }
+                if (chapter == null) {
+                    response.redirect("/textbook")
+                } else {
+                    val map = getMap(
+                        "Chapter ${chapter.chapterNumber} > ${chapter.name}",
+                        "chapter-${chapter.chapterNumber}",
+                        false
+                    )
+
+                    map["chapter"] = chapter
+
+                    handlebars.render(map, "chapter-home.hbs")
+                }
+            }
+
+            get("/notes") { request, response ->
+                val chapter = request.params(":chapter")?.toIntOrNull()
+                    ?.let { chapters.find { chapter -> chapter.chapterNumber == it } }
+                if (chapter == null) {
+                    response.redirect("/textbook")
+                } else {
+                    val map = getMap(
+                        "Chapter ${chapter.chapterNumber} Notes",
+                        "chapter-${chapter.chapterNumber}",
+                        false
+                    )
+
+                    val chapterNotes = textbookFiles.getFilesInDirectory("chapter${chapter.chapterNumber}/notes")
+                    map["notes"] = chapterNotes
+                        .map {
+                            "/textbook/chapter${chapter.chapterNumber}/notes/${it.fileName}" to it.fileName
+                        }
+                        .sortedBy { it.second }
+
+
+                    map["notes-header"] =
+                        "Notes for <a href='/textbook/${chapter.chapterNumber}'>Chapter ${chapter.chapterNumber}</a>"
+
+                    handlebars.render(map, "notes-options.hbs")
+                }
+            }
+
             get("/review") { request, _ ->
                 // TODO
             }
@@ -33,9 +99,7 @@ fun Website.textbook() {
                     val chapter = request.params(":chapter")?.toIntOrNull()
                     val section = request.params(":section")
 
-                    if (section == "" || section == "ov") {
-
-                    }
+                    ""
                 }
 
                 get("/practice") { request, _ ->
@@ -76,16 +140,16 @@ fun Website.textbook() {
                                     true
                                 )
 
-                                map["notes-options"] = possibleSectionNotes
+                                map["notes-header"] =
+                                    "Multiple Notes Found for Section ${chapter.chapterNumber}.${section.sectionNumber}"
+
+                                map["notes"] = possibleSectionNotes
                                     .map {
                                         "/textbook/chapter${chapter.chapterNumber}/notes/${it.fileName}" to ("Day ${it.fileName.removePrefix(
                                             "notes${chapter.chapterNumber}-${section.sectionNumber}day"
                                         )}")
                                     }
                                     .sortedBy { it.second }
-
-                                map["chapter"] = chapter
-                                map["section"] = section
 
                                 handlebars.render(map, "notes-options.hbs")
                             }
