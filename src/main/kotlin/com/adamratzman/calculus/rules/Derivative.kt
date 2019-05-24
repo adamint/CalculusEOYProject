@@ -54,7 +54,7 @@ enum class Derivative(
         GeneratorType.POWER_DER,
         CalcType.BASIC,
         "x^n",
-        "nx^{x-1}"
+        "nx^{n-1}"
     ),
     E(
         "e",
