@@ -73,5 +73,4 @@ class CosGenInt : ProblemGenerator(GeneratorType.COS_INT) {
         }
 
     }
-
 }

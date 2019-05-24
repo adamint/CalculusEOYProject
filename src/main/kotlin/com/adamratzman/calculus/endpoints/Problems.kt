@@ -17,11 +17,12 @@ fun Website.problems() {
         map["generators"] = listOf(
             "Derivative Practice" to problemGenerators
                 .filter { it.key.name.contains("der", true) }
-                .map { it.key.readable to "/problems/view?type=${it.key.name}&number=1" },
+                .map { it.key.readable to "/problems/view?type=${it.key.name}&number=1" }
+                .sortedBy { it.first },
             "Integral Practice" to problemGenerators
                 .filter { it.key.name.contains("int", true) }
                 .map { it.key.readable to "/problems/view?type=${it.key.name}&number=1" }
-
+                .sortedBy { it.first }
         )
 
         handlebars.render(map, "problem-generators-list.hbs")
