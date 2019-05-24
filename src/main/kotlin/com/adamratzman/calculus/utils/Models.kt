@@ -8,15 +8,21 @@ data class Chapter(
     val chapterNumber: Int,
     val sections: List<Section>,
     val concepts: List<Concept> = listOf()
-)
+) {
+    fun getNotes() = sections.map { it.notesNames }.flatten().map { "chapter$chapterNumber/notes/$it" }
+}
 
 data class Section(
+    val chapter: Int,
     val sectionNumber: Any,
     val name: String,
     val description: String = "section description",
-    val hasNotes: Boolean = true,
+    val notesNames: List<String> = listOf("notes$chapter-$sectionNumber.pdf"),
     val concepts: List<Concept> = listOf()
-) //TODO descriptions
+) {
+    val hasNotes: Boolean = notesNames.isNotEmpty()
+}
+//TODO descriptions
 
 data class Link(val name: String, val path: String)
 

@@ -3,27 +3,23 @@ package com.adamratzman.calculus.endpoints
 import com.adamratzman.calculus.Website
 import com.adamratzman.calculus.utils.render
 import com.adamratzman.calculus.utils.toJson
+import redirectToAwsFile
 import spark.Spark.get
 import spark.Spark.path
 
 fun Website.textbook() {
-    val textbookFiles = uploads.getFilesInDirectory("textbook")
-
     get("/notes") { request, _ ->
         val map = getMap("All Notes", "notes", false)
 
         map["notes-header"] = "All Calculus Notes"
 
-        map["notes"] = textbookFiles
-            .filter {
-                it.fileName.contains("/notes/notes.+.pdf".toRegex())
-            }
-            .sortedBy { it.fileName }
+        map["notes"] = chapters.map { it.getNotes() }.flatten()
+            .sorted()
             .map { upload ->
-                val name = "Section ${upload.fileName.split("/")[2].removePrefix("notes")
+                val name = "Section ${upload.split("/")[2].removePrefix("notes")
                     .removeSuffix(".pdf").replaceFirst("-", ".")}"
 
-                "/textbook/${upload.fileName}" to
+                "/textbook/$upload" to
                         if (!name.contains("day\\d".toRegex())) name
                         else name.substring(0, name.indexOf("day")) + " Day " + name.substring(name.indexOf("day") + 3)
             }
@@ -33,7 +29,7 @@ fun Website.textbook() {
     path("/textbook") {
         get("") { _, response -> response.redirect("/textbook/") }
 
-        get("/") { request, _ ->
+        get("/") { _, _ ->
             val map = getMap("Textbook", "textbook", false)
 
             map["chapters"] = chapters
@@ -75,10 +71,10 @@ fun Website.textbook() {
                         false
                     )
 
-                    val chapterNotes = textbookFiles.getFilesInDirectory("chapter${chapter.chapterNumber}/notes")
+                    val chapterNotes = chapter.getNotes()
                     map["notes"] = chapterNotes
                         .map {
-                            "/textbook/chapter${chapter.chapterNumber}/notes/${it.fileName}" to it.fileName
+                            "/textbook/$it" to it.split("/")[2]
                         }
                         .sortedBy { it.second }
 
@@ -120,18 +116,13 @@ fun Website.textbook() {
                     } else {
                         val (chapter, section) = chapterSectionPair
 
-                        val chapterNotes = textbookFiles.getFilesInDirectory("chapter${chapter.chapterNumber}/notes")
 
-                        val possibleSectionNotes =
-                            chapterNotes.filter { it.fileName.startsWith("notes${chapter.chapterNumber}-${section.sectionNumber}") }
+                        val possibleSectionNotes = section.notesNames
 
                         when {
                             possibleSectionNotes.isEmpty() -> response.redirect("/textbook")
                             possibleSectionNotes.size == 1 -> {
-                                response.raw().outputStream.write(possibleSectionNotes[0].content)
-                                response.raw().outputStream.flush()
-                                response.raw().outputStream.close()
-                                response.raw()
+                                response.redirectToAwsFile("/textbook/chapter${chapter.chapterNumber}/notes/${possibleSectionNotes[0]}")
                             }
                             else -> {
                                 val map = getMap(
@@ -145,7 +136,7 @@ fun Website.textbook() {
 
                                 map["notes"] = possibleSectionNotes
                                     .map {
-                                        "/textbook/chapter${chapter.chapterNumber}/notes/${it.fileName}" to ("Day ${it.fileName.removePrefix(
+                                        "/textbook/chapter${chapter.chapterNumber}/notes/$it" to ("Day ${it.removePrefix(
                                             "notes${chapter.chapterNumber}-${section.sectionNumber}day"
                                         )}")
                                     }

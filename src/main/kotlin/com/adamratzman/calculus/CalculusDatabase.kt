@@ -1,12 +1,12 @@
 package com.adamratzman.calculus
 
+import aws
 import com.adamratzman.calculus.endpoints.*
 import com.adamratzman.calculus.problems.addGenerators
 import com.adamratzman.calculus.utils.*
 import com.github.jknack.handlebars.Handlebars
 import com.github.jknack.handlebars.Options
 import com.google.gson.Gson
-import resources
 import spark.Spark.*
 import spark.staticfiles.StaticFilesConfiguration
 import spark.template.handlebars.HandlebarsTemplateEngine
@@ -27,17 +27,6 @@ class Website {
     val references = getAllReferences()
 
     val extendedReferences = getAllClassReferences() + references
-
-    val filesResourceDirectory = File(this::class.java.getResource("/public/uploads/").file)
-
-    val uploads: List<Upload> = filesResourceDirectory.walkTopDown().filter { it.isFile }.map {
-        Upload(
-            it.path.removePrefix(filesResourceDirectory.path + File.separator).replace(
-                File.separatorChar,
-                '/'
-            ), it.readBytes()
-        )
-    }.toList()
 
     init {
         HandlebarsTemplateEngine()
@@ -70,8 +59,8 @@ class Website {
         integrals()
         problems()
         reference()
-        resources()
         textbook()
+        aws()
     }
 
     internal fun getMap(pageTitle: String, pageId: String, positionBottom: Boolean): MutableMap<String, Any?> {
@@ -117,6 +106,6 @@ fun getHerokuAssignedPort(): Int {
     val processBuilder = ProcessBuilder()
     return if (processBuilder.environment()["PORT"] != null) {
         Integer.parseInt(processBuilder.environment()["PORT"])
-    } else 4567
+    } else 80
 //return default port if heroku-port isn't set (i.e. on localhost)
 }
