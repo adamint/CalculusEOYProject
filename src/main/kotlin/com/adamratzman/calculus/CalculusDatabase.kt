@@ -8,6 +8,7 @@ import com.adamratzman.calculus.endpoints.problems
 import com.adamratzman.calculus.endpoints.reference
 import com.adamratzman.calculus.endpoints.shortcuts
 import com.adamratzman.calculus.endpoints.textbook
+import com.adamratzman.calculus.endpoints.theorems
 import com.adamratzman.calculus.problems.addGenerators
 import com.adamratzman.calculus.utils.Chapter
 import com.adamratzman.calculus.utils.Section
@@ -76,6 +77,7 @@ class Website {
         reference()
         textbook()
         aws()
+        theorems()
     }
 
     internal fun getMap(pageTitle: String, pageId: String, positionBottom: Boolean): MutableMap<String, Any?> {

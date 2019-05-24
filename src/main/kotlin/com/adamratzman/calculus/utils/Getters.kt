@@ -107,7 +107,7 @@ fun getAllChapters(): List<Chapter> = listOf(
 )
 
 fun getAllReferences(): List<Link> = listOf(
-    Link("Theorems and Laws", "/theorems+laws"),
+    Link("Theorems and Laws", "/theorems"),
     Link("Derivative Rules", "/derivatives/"),
     Link("Integral Rules", "/integrals/"),
     Link("All Notes", "/notes")
