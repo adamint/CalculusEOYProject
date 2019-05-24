@@ -103,7 +103,7 @@ fun getAllChapters(): List<Chapter> = listOf(
 fun getAllReferences(): List<Link> = listOf(
     Link("Derivative Rules", "/derivatives/"),
     Link("Integral Rules", "/integrals/"),
-    Link("All Notes", "/notes/all")
+    Link("All Notes", "/notes")
 )
 
 fun getAllClassReferences(): List<Link> = listOf(

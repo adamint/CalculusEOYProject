@@ -43,7 +43,7 @@ class Website {
         HandlebarsTemplateEngine()
         registerHelpers()
 
-        port(80)
+        port(getHerokuAssignedPort())
 
         val staticFileHandler = StaticFilesConfiguration()
         staticFileHandler.configure("/public")
@@ -111,4 +111,12 @@ class Website {
         .map { it.copy(fileName = it.fileName.removePrefix("$name/")) }
 
     fun List<Upload>.getFile(name: String) = find { it.fileName == name }
+}
+
+fun getHerokuAssignedPort(): Int {
+    val processBuilder = ProcessBuilder()
+    return if (processBuilder.environment()["PORT"] != null) {
+        Integer.parseInt(processBuilder.environment()["PORT"])
+    } else 4567
+//return default port if heroku-port isn't set (i.e. on localhost)
 }
