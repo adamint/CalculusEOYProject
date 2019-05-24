@@ -29,7 +29,6 @@ data class Section(
 
     val hasNotes: Boolean = notesNames.isNotEmpty()
 }
-// TODO descriptions
 
 data class Link(val name: String, val path: String)
 
