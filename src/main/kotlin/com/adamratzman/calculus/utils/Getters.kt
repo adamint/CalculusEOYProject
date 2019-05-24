@@ -20,8 +20,13 @@ fun getChapterOne() = Chapter(
         Section(1, 6, "Limits at Infinity", 3)
     ),
     listOf(
-        Concept("Test concept"),
-        Concept("Test concept with link", "/theorems-and-laws")
+        Concept("A  limit is the value that a function \"approaches\" as the input \"approaches\" some value. Limits are essential to calculus and are used to define continuity, derivatives, and integrals."),
+        Concept("Limits can be found both graphically and mathematically"),
+        Concept("One-sided limits can also be evaluated even if a limit doesn't exist"),
+        Concept("Limits can be used to find horizontal asymptotes")
+    ),
+    additionalResources = listOf(
+        Link("Theorems", "/theorems/")
     )
 )
 
@@ -37,6 +42,21 @@ fun getChapterTwo() = Chapter(
         Section(2, 6, "Derivatives of Inverse Functions", 3),
         Section(2, 7, "Related Rates", null, notesNames = listOf()),
         Section(2, 8, "Newton's Method", 2, isImportant = false)
+    ),
+    listOf(
+        Concept("Derivatives and their connection to limits", "/theorems/"),
+        Concept("Basic differentiation rules", "/derivatives/"),
+        Concept("The Chain Rule", "/textbook/2/4"),
+        Concept(
+            "Implicit differentiation and derivatives of inverse functions are important and will " +
+                    "be on the AP exam. Learn them!"
+        ),
+        Concept("Be comfortable with creating basic differential functions"),
+        Concept("Newton's Method is useless. Don't remember it after Chapter 2")
+    ),
+    additionalResources = listOf(
+        Link("Derivative Rules and Properties", "/derivatives/"),
+        Link("Theorems", "/theorems/")
     )
 )
 
@@ -51,6 +71,26 @@ fun getChapterThree() = Chapter(
         Section(3, 5, "A Summary of Curve Sketching", 4, isImportant = false),
         Section(3, 6, "Optimization", 5),
         Section(3, 7, "Differentials", 2)
+    ),
+    listOf(
+        Concept(
+            "Know the differences between absolute and relative extrema and their respective theorems",
+            "/theorems/"
+        ),
+        Concept(
+            "MVT relates the average rate of change to the derivative at a point. It is extremely " +
+                    "important."
+        ),
+        Concept("Rolle's Theorem is a consequence of MVT and should not be memorized."),
+        Concept(
+            "The First Derivative Test is much more important than the Second Derivative Test in determining " +
+                    "relative extrema, but both can be used"
+        ),
+        Concept("The second derivative deals with concavity.")
+    ),
+    additionalResources = listOf(
+        Link("Derivative Rules and Properties", "/derivatives/"),
+        Link("Theorems", "/theorems/")
     )
 )
 
@@ -64,6 +104,16 @@ fun getChapterFour() = Chapter(
         Section(4, 5, "Integration by Substitution", 4),
         Section(4, 6, "The Natural Logarithmic Function: Integration", 3),
         Section(4, 7, "Inverse Trigonometric Functions: Integration", 3)
+    ),
+    listOf(
+        Concept("An antiderivative of F is the function you could take the derivative of to get F"),
+        Concept("Basic Integration Rules", "/integrals/"),
+        Concept("Make sure to memorize all theorems concerning integrals", "/theorems/"),
+        Concept("Integration by substitution may be the only way to integrate a function, and is very useful")
+    ),
+    additionalResources = listOf(
+        Link("Integration Rules and Properties", "/integrals/"),
+        Link("Theorems", "/theorems/")
     )
 )
 
@@ -74,6 +124,13 @@ fun getChapterSeven() = Chapter(
         Section(7, 1, "Basic Integration Rules", 3),
         Section(7, 2, "Integration by Parts", 4),
         Section(7, 7, "Indeterminate Forms and L'Hopital's", 4)
+    ),
+    listOf(
+        Concept("Integration by parts"),
+        Concept("L'Hopital's rule massively simplifies solving limits (where it applies). Remember it")
+    ),
+    additionalResources = listOf(
+        Link("Integration Rules and Properties", "/integrals/")
     )
 )
 

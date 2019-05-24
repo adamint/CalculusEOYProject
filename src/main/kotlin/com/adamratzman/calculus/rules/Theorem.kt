@@ -129,6 +129,15 @@ math = "There exists a number ${Math("c")} in the closed interval ${Math("[a,b]"
         "function ${Math("f")}",
         "${Math("f")} is integrable",
         math = "${Math("\\dfrac {d}{dx} \\int_a^x f(t)dt=f(x)")}"
+    ),
+
+    L_HOPITAL(
+        "L'Hôpital's Rule",
+        TheoremType.BASIC,
+        "functions ${Math("f")} and ${Math("g")}",
+        "${Math("\\lim \\limits_{x \\to c} \\dfrac {f(x)}{g(x)}")} " +
+                "is in an <a href='https://en.wikipedia.org/wiki/Indeterminate_form'>indeterminate form</a>",
+        math = "${Math("\\lim \\limits_{x \\to c} \\dfrac {f(x)}{g(x)}=\\lim \\limits_{x \\to c} \\dfrac {f'(x)}{g'(x)}")}"
     )
     ;
 
