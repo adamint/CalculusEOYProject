@@ -71,11 +71,11 @@ class LogGenDer : ProblemGenerator(GeneratorType.LOG_DER) {
         val const = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         return if (Random.nextBoolean()) {
             problem(
-                "log_$a(${const}x)",
+                "log_{$a}(${const}x)",
                 "\\dfrac $const{xln($a)}"
             )
         } else problem(
-            "log_${a}x",
+            "log_{${a}}x",
             "\\dfrac 1{xln($a)}"
         )
     }
@@ -86,7 +86,7 @@ class LnGenDer : ProblemGenerator(GeneratorType.LN_DER) {
         val a = genVariableNumber(10, 0, 1, allowDouble = false).toInt().absoluteValue
         return problem(
             "ln(${a}x)",
-            "\\dfrac ${a}x"
+            "\\dfrac {${a}}x"
         )
     }
 }

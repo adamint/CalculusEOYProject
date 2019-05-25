@@ -98,7 +98,7 @@ enum class Derivative(
         GeneratorType.SIN_DER,
         CalcType.BASIC_TRIGONOMETRIC,
         "sin(ax)",
-        "a*cos(ax)",
+        "acos(ax)",
         "a is a constant multiple"
     ),
     COS(

@@ -9,8 +9,6 @@ enum class Integral(
     val before: String,
     val after: String
 ) {
-    // TODO change how the property rules are displayed so there is no +C
-
     // properties
     CONSTANT_MULTIPLE(
         "General",
@@ -77,14 +75,14 @@ enum class Integral(
         CalcType.INVERSE_TRIGONOMETRIC,
         GeneratorType.ARCTAN_INT,
         "\\dfrac 1{a^2 + x^2}",
-        "\\dfrac 1aarctan\\dfrac xa"
+        "\\dfrac {1}{a}arctan\\dfrac xa"
     ),
     ARCSEC(
         "Inverse Secant",
         CalcType.INVERSE_TRIGONOMETRIC,
         GeneratorType.ARCSEC_INT,
         "\\dfrac 1{x\\sqrt{x^2 - a^2}}",
-        "\\dfrac 1aarcsec\\dfrac {|x|}a"
+        "\\dfrac {1}{a}arcsec\\dfrac {|x|}a"
     ),
 
     // basic trig
